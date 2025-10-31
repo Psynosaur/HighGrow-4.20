@@ -1,0 +1,26 @@
+LIBRARY   Robbie
+
+EXPORTS
+    Robbie_Timer               @2
+    Robbie_Paint               @3
+    Robbie_Size                @4
+    Robbie_EndFrame            @5
+    Robbie_EndSound            @6
+
+    RobbiePlayToonFrame        @7
+    RobbiePlayToonStep         @8
+    RobbiePlayToonFile         @9
+    RobbiePlayToonResource     @10
+
+    RobbiePlayToonFrameEz      @11
+    RobbiePlayToonFileEz       @12
+    RobbiePlayToonResourceEz   @13
+
+    RobbiePlayToonFrameEx      @14
+    RobbiePlayToonFileEx       @15
+    RobbiePlayToonResourceEx   @16
+
+    IsRobbiePlaying            @17
+    StopRobbiePlayback         @18
+    PauseRobbiePlayback        @19
+    ContinueRobbiePlayback     @20

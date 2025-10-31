@@ -1,0 +1,299 @@
+
+The Weird Wally DLL. version 1.2                          by Slick Software.
+----------------------------------------------------------------------------
+A Cartoon Animation Library for Windows 95 and Windows NT 3.51.
+
+
+Background:
+-----------
+I started developing Weird Wally in early 1995 with the main intention of 
+creating an animated cartoon screen saver for Microsoft Windows 3.1. 
+
+Sprite animation techniques have always been very tricky to implement using
+the Windows API, which does not support transparency in any of their BitBlt
+raster operation codes. To draw an irregular shaped bitmap over a background,
+requires many calls to the BitBlt function, creating temporary and masked 
+bitmaps in the process.
+
+Working mainly evenings and weekends, I completed the Weird Wally Screen Saver
+version 1.1 for Windows 3.1 in a few months. I released this version as
+Wally11.zip and uploaded it onto the Internet as Shareware. In this screen
+saver program, Weird Wally walks onscreen to a random position over a tiled 
+background, turns around, and walks offscreen again.
+
+This screen saver program received an overwhelming response from Windows users
+all over the world, some sites on the Internet reporting over 400 downloads per
+week! 
+
+I decided to continue my development of Weird Wally, to include more animations
+and popup text bubbles. This enables Wally to communicate to users by "speaking" 
+short sentences. I also started developing the ToonFile editor, which allows
+anyone to save a number of walking sequences (or frames) in a Wally Toon File.
+Using this editor, you can create and edit crazy cartoons by selecting poses,
+adding speech text and controlling Wally's facial expressions.
+
+With the release of Windows 95 in August, I decided to port my 16 bit program 
+to 32 bits, and to continue developing it as a Windows 95 Screen Saver. Towards
+the end of 1995, I released version 1.2 of the Weird Wally Screen Saver (and the
+Toon File editor) as Wally95.zip - Weird Wally's Revenge.
+
+
+The Wally95 DLL:
+----------------
+Toon Files are ideal for communicating ideas to the user in a humorous animated
+manner. Wally could be used to introduce a new program, by walking around the 
+program's main window and pointing out and explaining new features, or he could
+be around to offer your user interactive help when he needs it. Wally could also
+be the star attraction in your new Windows game, or educational program.
+
+I decided to distribute my Weird Wally animation engine as a 32 bit DLL which 
+can be loaded by any Windows 95/NT program to call Wally's animation functions.
+
+This version (1.2) of the Wally95.dll supports four basic playback methods:
+
+1. ToonFrame Playback - Wally walks onscreen, poses, winks, speaks the text, 
+                        and then walks offscreen again.
+
+2. ToonStep Playback  - Wally's movements are controlled by information in the
+                        ToonStep structure. This method could be used when
+                        designing an interactive game or program.
+
+3. ToonFile Playback  - Wally's movements are controlled by the information in
+                        the Toon File. Toon Files consist of a predefined 
+                        sequence of ToonSteps.
+
+4. ToonRes Playback   - Include Toon Files as resources in your program's 
+                        executable, playing them back when required.
+
+
+Editing Toon Files:
+-------------------
+This library contains no functions for editing or saving Toon Files. To create
+your Toon Files, you should download the lastest version of the Weird Wally
+Screen Saver (version 1.2) from an Internet ftp site near you.
+
+
+Legal Requirements for using the Wally95 library:
+-------------------------------------------------
+This is a fully functional Shareware version of this DLL. You may only include
+this unregistered library with your program under the following conditions:
+
+1. You send a completed copy of your program to: 
+
+       Slick Software,
+       25 Hermon Road,
+       Brentwood Park,
+       7550. Cape Town
+       South Africa.
+
+2. You include one ToonFrame at the end of your program with the text:
+
+       "Weird Wally's animations provided by Slick Software!"
+
+3. You do not change the file Wally95.dll in any way.
+
+
+If you register this version of the library, you may include it without any of
+the above restrictions. When you register, you will receive the latest version
+of the DLL and also the registered Weird Wally Toon File Editor.
+
+The registered version also includes many more crazy poses and .wav sound file 
+playback support. To register, send 30 units of your currency, to Slick Software 
+at the above address.
+
+
+Sample Program:
+---------------
+This zip file should also include the complete source code for a small C program
+describing the use of this library. The sample program creates a window with a 
+tiled bitmap as the background and implements each of the available functions in 
+an easy to understand manner. 
+
+Files required to recompile and run this sample application are:
+
+  WALLY95.DLL   - Weird Wally version 1.2 Shareware 32 bit DLL.
+  WALLY95.H     - Weird Wally Library header file.
+
+  WALLYAPP.H    - Sample Application header file.
+  WALLYAPP.C    - Sample Application source code file.
+  WALLYAPP.MAK  - Sample Application project file.
+  WALLYAPP.RC   - Sample Application resource script file.
+  RESOURCE.H    - Resource identifiers for Sample Application.
+  INTRO.WTF     - Toon file saved as a resource in the Sample Application
+  BACKGR.BMP    - Bitmap file saved as a resource in the Sample Application
+
+The Sample Application's program file WALLYAPP.EXE, and another Toon file
+SAMPLE.WTF have also been included.
+
+This program was created with Microsoft Visual C++ version 2.1, and should 
+compile on most 32 bit C compilers.
+
+
+Programming Requirements:
+-------------------------
+For a Windows program to call any of the animation fuctions, it must have at 
+least one visible window for Wally to walk about in. This Window's WinProc must
+also monitor and respond to four Windows messages which control the animation 
+playback. These messages are:
+
+  WM_PAINT    - Your program must respond by calling the Wally_Paint function.
+  WM_SIZE     - Your program must respond by calling the Wally_Size function.
+  WM_TIMER    - Your program must respond by calling the Wally_Timer function.
+  WM_ENDFRAME - Your program must respond by calling the Wally_EndFrame function.
+
+In addition to these four messages, your program is also sent a WM_ENDPLAYBACK
+message when the animation has compeleted. 
+
+The WM_ENDFRAME and WM_ENDPLAYBACK are user messages defined in WALLY95.H as
+(WM_USER+1001) and (WM_USER+1002) respectively. Your program should not define 
+new user messages with the same IDs.
+
+The animation engine sets up four Windows timers to control the various stages
+of animation. These timers are created with IDs ranging from 1000 to 1003. Your
+program may set up additional timers and service them with the WM_TIMER message,
+but you must call Wally_Timer when the animation timer messages are received.
+
+
+Wally95 DLL Functions:
+----------------------
+The available functions can be divided into three groups, namely Windows Message
+Handling functions, Animation Playback functions and Animation Control functions.
+
+Windows Message Handling Functions:
+-----------------------------------
+These fuctions MUST be called when the WM_PAINT, WM_SIZE, WM_TIMER and 
+WM_ENDFRAME messages are received: 
+
+void Wally_Paint(HDC hdc) 
+     - hdc is the handle of the Window's device context to draw in. 
+       This handle is usually obtained by calling the BeginPaint function.
+       
+void Wally_Size(HWND hWnd, LPARAM lParam)
+     - hWnd is the handle of the window we're walking in.
+     - lParam holds the new width and height of window, as provided by WM_SIZE
+
+void Wally_Timer(HWND hWnd, WPARAM wParam) 
+     - hWnd is the handle of the window we're walking in.
+     - wParam holds the ID of the current timer message, as provided by WM_TIMER
+
+void Wally_EndFrame(HWND hWnd)
+     - hWnd is the handle of the window we're walking in.
+
+None of the above functions return any results to the program calling them.
+
+
+Animation Playback Functions:
+-----------------------------
+Any of the following functions may be called to start animation playback in 
+the calling program's window. All these functions will return a TRUE if the
+playback was started, and FALSE if it failed to start. If the playback did
+indeed start, your program will be sent a WM_ENDPLAYBACK message when it has
+completed.
+
+
+1. ToonFrame Playback - Wally walks onscreen to a specified point, poses, 
+   ------------------   winks, speaks the text and then walks offscreen again.
+
+BOOL WallyPlayToonFrame(HWND hWnd, POINT ptEnd, int iPose, BOOL bWink, LPSTR szText)
+
+       - hWnd is the handle of the window to walk in.
+
+       - ptEnd is the end point to walk towards.
+
+       - iPose selects Wally's pose when he reaches the end point (ptEnd)
+         Valid poses range from 1 to 8 (Register this version for more poses).
+
+       - if bWink is true, Wally will wink before speaking the text.
+
+       - szText is a pointer to a null terminated text string to be spoken. 
+         The maximum length of the string is 70 bytes. If this is a NULL pointer,
+         no text is spoken.
+
+
+2. ToonStep Playback  - Wally walks from the point described in the ToonStep 
+   -----------------    structure to the given end point. 
+
+BOOL WallyPlayToonStep(HWND hWnd, PTOONSTEP tstep, POINT ptEnd);
+
+       - hWnd is the handle of the window to walk in.
+
+       - tstep is a far pointer to a ToonStep structure. 
+
+       - ptEnd holds the X and Y position of the Walk's end point.
+
+
+    The ToonStep structure is defined in WALLY95.H as:
+
+      typedef struct
+         { // Toon Step Structure
+         int  itXpos;      // Start Point's x-Position
+         int  itYpos;      // Start Point's y-Position 
+         int  itPose;      // Wally's Pose at end of walk. 0 > 7 = Valid poses
+         UINT uiWait;      // seconds to wait while displaying bubble text
+         BOOL btWink;      // Set to TRUE to wink at end of frame
+         char sztText[70]; // text to display in bubble
+         } TOONSTEP;
+
+    When this function returns, the itXpos and itYpos elements of the structure
+    now hold the X and Y position passed as the ptEnd parameter. This method
+    enables you to set up the ToonStep structure with the (usually offscreen)
+    start position and first frame's info, and then begin calling the
+    WallyPlayToonStep function with a new end point each time. The itPose,
+    uiWait, btWink and sztText elements may be changed after each function call.
+
+
+3. ToonFile Playback  - Wally's movements are controlled by the information in
+   -----------------    the Toon File. 
+
+BOOL WallyPlayToonFile(HWND hWnd, LPSTR szToonFile)
+
+       - hWnd is the handle of the window to walk in.
+
+       - szToonFile is a pointer to a null terminated text string naming a 
+         valid (version 1.2) .wtf Wally Toon File. This string may contain a
+         directory path name and does support long file names.
+
+
+4. ToonRes Playback   - Searches for, loads and plays Toon Files which have 
+   ----------------     been saved as resources in your program's executable 
+                        or resource library file.
+
+BOOL WallyPlayToonResource(HWND hWnd, HINSTANCE ghInst, LPSTR szToonResource);
+
+       - hWnd is the handle of the window to walk in.
+
+       - ghInst is the handle of the Instance module containing the TOONFILE 
+         resource.
+
+       - szToonResource is a pointer to a null terminated text string naming a 
+         valid ToonFile Resource. Any version 1.2 Wally Toon File may be imported
+         as a TOONFILE resource in your program's executable file or resource 
+         library.
+
+
+Animation Control Functions:
+----------------------------
+These functions may be called to check if playback is currently in progress, and
+to pause and/or continue playback.
+
+BOOL IsWallyPlaying(void)  
+     - returns True if Wally is currently walking, winking, or talking. 
+
+BOOL PauseWallyPlayback(HWND hWnd) 
+     - Pauses the animation playback. Returns True if paused.
+
+BOOL ContinueWallyPlayback(HWND hWnd) 
+     - Continues animation playback if paused. Returns True if continued.
+
+
+
+Final Comment:
+--------------
+Having distributed this library as Shareware, Slick Software accepts no 
+responsibility for any problems experienced while using it. 
+
+Slick's Quote: Never look a gift DLL in the mouth!
+
+Have Fun,
+
+Slick.

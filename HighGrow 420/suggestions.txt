@@ -1,0 +1,43 @@
+ENHANCEMENTS
+------------
+
+more growrooms (different types) - registered version only!!
+
+better security system (new code & easter egg)
+
+better graphics (icons, title-bmp, etc)
+
+different types of lights
+
+the program should be a free program because everyone pirates it anyway.
+
+charts on ferterlizing and watering for best soil condtions
+
+zoom on the marijuana
+
+keep track of the individual nutrients added instead of just keeping a total
+
+make the little man with all advice smoke the weed
+
+contest every 120 days or so for the best growing virtual plants
+
+the option to only run in the system tray if you minimise it
+
+some ways to sell your buds to buyers
+
+12 new seeds
+
+Buds to change colour when ripe
+
+play MP3 files as well as MIDI files
+
+FIX BUGS
+--------
+
+hermaphrodite problem (no males?)
+
+lighting should allow late switch on and early switch off
+
+better information on import/exporting seeds
+
+repainting problem in the harvested plants log

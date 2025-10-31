@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: RobbieDLL - Win32 Wally 95 Release DLL--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSPC2A0.TMP" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp".\Robbie_DLL/RobbieDLL.pch" /YX /Fo".\Robbie_DLL/" /Fd".\Robbie_DLL/" /FD /c 
+"C:\msvc40\Slick\Robbie\Updatexe.c"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC2A0.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPC2A1.TMP" with contents
+[
+winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Robbie.pdb" /machine:I386 /def:".\Robbie.def" /out:".\Robbie_DLL\Robbie.dll" /implib:"Robbie.lib" 
+.\Robbie_DLL\ANIMATE.OBJ
+.\Robbie_DLL\BUBBLE.OBJ
+.\Robbie_DLL\EXPRESNS.OBJ
+.\Robbie_DLL\MESSAGES.OBJ
+.\Robbie_DLL\PLAYSND.OBJ
+.\Robbie_DLL\Rdllwin.obj
+.\Robbie_DLL\SPRITE32.OBJ
+.\Robbie_DLL\TOONFILE.OBJ
+.\Robbie_DLL\RobbieDll.res
+.\Robbie_DLL\Updatexe.obj
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPC2A1.TMP"
+<h3>Output Window</h3>
+Compiling...
+Updatexe.c
+Linking...
+   Creating library Robbie.lib and object Robbie.exp
+
+
+
+<h3>Results</h3>
+Robbie.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

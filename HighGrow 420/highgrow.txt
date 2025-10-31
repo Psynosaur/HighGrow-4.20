@@ -1,0 +1,197 @@
+/*
+
+factors
+-------
+1. light
+	1.1  intensity
+		3 lamps can be turned on or off
+		
+	1.2  proximity
+		lamps can be raised or lowered over each plant
+
+	1.3  duration
+		set the daily photoperiod
+
+2. water
+	2.1  frequency
+		ideal 2 times per week, worst at 1 or 4 times, dies if every day
+		plant saveable after two and dies after three weeks without water
+		
+	2.2  quantity
+		ideal at 1 litre, worst at 500ml or 2 litres, dies if 3 litres each watering
+
+	2.3  temperature
+		best at room temp, worst at 0 degrees
+
+3. soil
+	3.1  PH balance
+		too much fertiliser causes too much acidity
+	
+4. fertiliser
+	4.1  frequency
+		ideal 1 time per week during vegetative, worst every day or never
+
+	4.2  nitrogen/phosphorus/potassium mix
+		nitrogen gives high growth, the others give leaf growth
+
+5. pruning
+	5.1  frequency
+		not before vegetative stage or after preflowering
+		if more than once a week, for 4 weeks the plant dies
+
+	5.2  quantity
+		ideal to take only growing tip
+		plant dies if too much is cut off each time
+
+6. humidity
+	6.1  humidity
+		ideal if the lights stay at 5 centimeters from the tip
+
+7. registration
+	7.1  registration conditions
+		sending $25 will get you the registered version and 3 real seeds!
+
+	7.2  days unregistered
+		plant's growth starts to slow after one month
+		plants will die at 2 months if still unregistered
+
+	7.3  revival conditions
+		sending $35 will rejuvinate plants to fully registered from day 1
+
+
+objectives
+----------
+1.  to grow 3 marijuana seeds within 8 months
+	germination after 3 (registered) or 10 (shareware) days
+	seedling stage for 4 to 6 weeks
+	vegetative stage in 3 to 6 months
+	preflowering for 2 to 3 weeks
+	flowering from 4 to 6 weeks
+
+2.  to produce big plants with many strong branches you need,
+	light on maximum before flowering
+	watered an average of 3 days per week, not too much at seedling stage
+	soil not over fertilised
+	pruned at start of vegetative stage and not to often afterwards
+	good humidity if close to light
+
+3.  to create an environment ideal for maximum potency maintain,
+	lighting close but not touching plants
+	correct watering, but slow down at flowering
+	regular fertilising but not too much to destroy PH balance
+	do not prune after preflowering
+	
+4.  to prevent the plants from dying
+	don't let the lights touch the plant
+	water between 1 and 3 times per week
+	don't fertilise more than once a week
+	don't prune too much
+	register the program
+
+
+program objective
+-----------------
+the user should name his 3 plants when he plants the seeds
+their sex is only decided at preflowering with a 30% chance of being male
+the user should visit every day for extra growth
+we'll calculate growth since last visit each time before he views his plants
+he enters the daily(?) activities for each plant on a dialog
+each day, we'll give the user a tip on each activity (stringtable entries)
+we'll record each day's activities and calculate the general health of each plant
+using this health factor, we'll add or remove nodes from each plant
+each node of each plant is recorded and can be adjusted by health factors
+the entire growing progress is viewable in chart form
+everything is stored in a file which is checksummed to prevent tampering
+
+
+the plant structure
+-------------------
+for each plant we'll hold
+
+	char    szName[50]      // user may enter this when he plants his seed
+	int     iGrowthStage    // seedling, vegetative, flowering etc.
+	BOOL    bFemale         // may be true only after three months
+	int     iTHC            // current potency of plant (based on ideal health)
+	int     iMass           // current weight of wet plant in grams
+	int     iClipMass       // total weight of clipped plant material in grams
+
+
+the health structure
+--------------------
+for each day of the year in each plant, we record
+
+	int     iLightDuration  // half hours per day of light
+	int     iLightIntensity	// mm away of light from last pNodeEnd
+	BOOL    bWatered        // ideal at 3 times per week
+	int     iWaterAmount    // ideal at 1000 ml per plant
+	BOOL    bFertilised     // ideal at once a week
+	int     iNPKmix         // 0-255 for each in RGB coloref type struct
+	BOOL    bPruned         // if yes, growth stopped for four days before splitting
+	BOOL    bRegistered     // untill true, growth at half speed
+
+When the user adjusts the "factors" dialog we fill these elements (for the current day 
+and for the few days since he last started the program) and then calculate the 
+general health of the plant, which we will store in the "conditions" struct variable.
+
+	int     iHealth         // is used to apply the new day's growth
+
+This health value is used when each node is redrawn rather than recalculating it for each
+day in the plant's life before drawing.
+
+
+the iHealth factor
+------------------
+There are four stages of growth, based on the health factor
+
+	0  to 20  and the plant is dying
+	20 to 30  and the plant is barely surviving
+	30 to 60  and the plant is healthy
+	60 to 100 and the plant is thriving
+
+to calculate this value, we use the previous day's value and add or subtract from it
+based on the calculated "conditions" struct variables,
+
+more health for long photoperiod and lose it if long photoperiod after flowering starts
+more health if light is at ideal height from plant, less if further away and none if off
+etc, etc, etc.....
+
+once we've calculated the health of the plant we'll create a few more node structures in
+our array of exisitng nodes (saved in our file).
+
+
+the node structure
+------------------
+for each node in each plant we record,
+
+	POINT   ptNodeStart      // X and Y of start of node
+	POINT   ptNodeEnd        // X and Y of end of node
+	BOOL    bGrowingTip      // true if this is a growing tip
+	int     iStemThickness   // between 1 and 5 pixels thick
+	int     iNumLeaves       // 0 to 4 leaves per node (always at top)
+	int     iLeafType        // small or big, or dead, or buds at different stages
+
+before allowing the user to view the condition of his plants, we first check the condition
+of his plants based on his last visit (dead or alive) and we may then alter the
+iNumLeaves and iLeafType elements for each node.
+
+
+adding new nodes
+----------------
+each day in the plant's life some nodes are added to our plant
+first natural node split at start of vegetative stage and twice after (shareware?)
+each time he prunes a growing tip, 3-4 days must elapse before node splits and grows again
+each plant has a variable number of growing tips, based on pruning regularity
+a new node is added to most growing tips on each day (based on day last pruned)
+healthy plants have nodes which are created longer, but unhealthy plants have short nodes
+
+
+adding new leaves
+-----------------
+the condition of leaves and stem thickness is also determined by health
+each day has some leaves added to some existing nodes and some falling off
+leaves are exchanged for growing male or female flower clusters after preflowering
+we have four leaf sets for each of the health stages (dead, surviving, healthy, thriving)
+
+
+
+*/

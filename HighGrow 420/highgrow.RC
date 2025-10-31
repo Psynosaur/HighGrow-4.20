@@ -1,0 +1,1755 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "winver.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "commctrl.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+OPENHAND                CURSOR  DISCARDABLE     "openhand.cur"
+CLOSEDHAND              CURSOR  DISCARDABLE     "closedha.cur"
+ZOOM                    CURSOR  DISCARDABLE     "cur00001.cur"
+BOOMHAND                CURSOR  DISCARDABLE     "boomhand.cur"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+SCISSORS                CURSOR  DISCARDABLE     "scissors.cur"
+LINKHAND                CURSOR  DISCARDABLE     "linkhand.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&Start"
+    BEGIN
+        MENUITEM "&HighGrow Objectives..\tCtrl+O", IDM_OBJECTIVES
+        MENUITEM "&Rasta Robbie's Rules..\tCtrl+W", IDM_ROBBIE
+        MENUITEM "&Planting Your Seeds..\tCtrl+P", IDM_PLANTING
+        MENUITEM SEPARATOR
+        MENUITEM "Start &Music Playback\tCtrl+M", IDM_SOUND
+        MENUITEM "&Harvested Plants Log..\tCtrl+H", IDM_PLOG, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit HighGrow\tCtrl+X",      IDM_EXIT
+    END
+    POPUP "&Grow Rooms"
+    BEGIN
+        MENUITEM "&Add Grow Room..\tCtrl+N",    IDM_NEWGROW
+        MENUITEM SEPARATOR
+        MENUITEM "&Enter Grow Room..\tCtrl+G",  IDM_GROWROOM
+        MENUITEM "E&dit Grow Room..\tCtrl+D",   IDM_EDITGROW
+        MENUITEM SEPARATOR
+        MENUITEM "&Daily Growth Chart..\tCtrl+C", IDM_GROWCHART, GRAYED
+    END
+    POPUP "&Plants"
+    BEGIN
+        POPUP "Daily &Activities.."
+        BEGIN
+            MENUITEM "Seed 1..\tCtrl+1",            IDM_ACT01, GRAYED
+            MENUITEM "Seed 2...\tCtrl+2",           IDM_ACT02, GRAYED
+            MENUITEM "Seed 3..\tCtrl+3",            IDM_ACT03, GRAYED
+        END
+        POPUP "Growth &Log.."
+        BEGIN
+            MENUITEM "Seed 1..\tShft+Ctrl+1",       IDM_HIST01, GRAYED
+            MENUITEM "Seed 2...\tShft+Ctrl+2",      IDM_HIST02, GRAYED
+            MENUITEM "Seed 3..\tShft+Ctrl+3",       IDM_HIST03, GRAYED
+        END
+        MENUITEM SEPARATOR
+        POPUP "&Harvesting"
+        BEGIN
+            MENUITEM "Seed 1..",                    IDM_HARV01, GRAYED
+            MENUITEM "Seed 2...",                   IDM_HARV02, GRAYED
+            MENUITEM "Seed 3..",                    IDM_HARV03, GRAYED
+        END
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "&Alarm Clock..\tCtrl+K",      IDM_ALARMSET
+        MENUITEM "&Vacation Mode..\tCtrl+V",    IDM_VACMODEON
+        MENUITEM "&Lock HighGrow..\tCtrl+L",    IDM_LOCK
+        MENUITEM "&Grow Room Music..\tCtrl+S",  IDM_SOUNDON
+        MENUITEM SEPARATOR
+        MENUITEM "&Auto Grow Room Entry\tCtrl+E", IDM_AUTOGROW
+        MENUITEM "A&uto-Load on Startup\tCtrl+U", IDM_AUTOLOAD
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents\tF1",               IDM_HELPCONTENTS
+        MENUITEM "&Growing Tips\tCtrl+T",       IDM_HELPTIPS
+        MENUITEM SEPARATOR
+        MENUITEM "&About HighGrow...\tCtrl+A",  IDM_ABOUT
+    END
+END
+
+TRAYMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Tray"
+    BEGIN
+        MENUITEM "&Enter Grow Room..",          IDM_GROWROOM
+        MENUITEM SEPARATOR
+        MENUITEM "&HighGrow Help..",            IDM_HELPCONTENTS
+        MENUITEM "&About HighGrow..",           IDM_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit HighGrow",              IDM_EXIT
+    END
+END
+
+CONTEXTMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        MENUITEM "&Information for..",          IDM_ACTINFO
+        MENUITEM SEPARATOR
+        MENUITEM "&Lighting for..",             IDM_ACTLIGHTS
+        MENUITEM "&Watering for..",             IDM_ACTWATER
+        MENUITEM "&Fertilizing for..",          IDM_ACTFERT
+        MENUITEM "&Pruning for..",              IDM_ACTPRUNE
+    END
+END
+
+BOOMBOXMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        MENUITEM "Start &Music Playback",       IDM_SOUND
+        MENUITEM "&Remove Boom Box Player",     IDM_HIDEBOOM
+    END
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 3,0,0,0
+ PRODUCTVERSION 3,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0xbL
+#else
+ FILEFLAGS 0xaL
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "Comments", "HighGrow is finally FREEWARE !!\0"
+            VALUE "CompanyName", "Slick Software\0"
+            VALUE "FileDescription", "HighGrow - Legal Marijuana Growing\0"
+            VALUE "FileVersion", "3.0\0"
+            VALUE "InternalName", "HighGrow\0"
+            VALUE "LegalCopyright", "Copyright © Slick Software 2002\0"
+            VALUE "LegalTrademarks", "Slick Software is dedicated to creating fun educational software\0"
+            VALUE "OriginalFilename", "HighGrow\0"
+            VALUE "PrivateBuild", "3.11\0"
+            VALUE "ProductName", "HighGrow\0"
+            VALUE "ProductVersion", "3.0\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // !_MAC
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""winver.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""commctrl.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ABOUT DIALOGEX 22, 17, 349, 185
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "About HighGrow"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Continue",IDCANCEL,256,166,88,14,WS_GROUP
+    CTEXT           "HighGrow ",IDC_ST02,165,9,173,17,SS_SUNKEN
+    LTEXT           "Freeware Version 4.20",IDC_ST03,166,34,115,11
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,159,5,185,156
+    LTEXT           "You can now also download additional room image files to use in your new grow rooms by..",
+                    IDC_STATIC,166,100,171,21
+    ICON            "DLG_ICON",IDC_STATIC,315,31,20,20
+    LTEXT           "slicker@mweb.co.za",IDC_ST04,242,142,101,12
+    CONTROL         "",IDC_ST01,"Static",SS_ETCHEDFRAME | SS_SUNKEN,5,5,149,
+                    175,WS_EX_CLIENTEDGE
+    LTEXT           "By Slick Software - 2005",IDC_STATIC,166,50,92,9
+    LTEXT           "or you can email me at:",IDC_STATIC,166,144,77,10
+    LTEXT           "http://www.highgrow.us",IDC_ST05,243,129,95,10
+    LTEXT           "Visiting our web site at:",IDC_STATIC,166,129,77,10
+    LTEXT           "This Freeware version of HighGrow 4.20 may be copied and shared freely with all your friends. Please also feel free to offer it as a download link from your web-site.",
+                    IDC_STATIC,166,65,171,31
+END
+
+T_LIGHT DIALOG DISCARDABLE  0, 0, 250, 150
+STYLE DS_MODALFRAME | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDL_CM01,83,100,56,75,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDL_CM02,83,117,56,75,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Slider1",IDL_SL01,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_VERT | TBS_TOP | WS_TABSTOP,210,32,21,102
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,5,5,240,140
+    GROUPBOX        "Height (meters)",IDC_STATIC,153,10,86,129
+    GROUPBOX        "Weekly Lighting Tip",IDC_STATIC,12,10,136,55
+    LTEXT           "1.00",IDC_STATIC,190,87,18,8
+    LTEXT           "2.00",IDC_STATIC,190,52,18,8
+    LTEXT           "0.50",IDC_STATIC,190,104,18,8
+    LTEXT           "0.00",IDC_STATIC,190,122,18,8
+    LTEXT           "1.50",IDC_STATIC,190,70,18,8
+    LTEXT           "2.50",IDC_STATIC,190,35,18,8
+    LTEXT           "Switch Lamp ON:",IDC_STATIC,20,102,56,8
+    LTEXT           "Switch Lamp OFF:",IDC_STATIC,20,119,59,8
+    LTEXT           "Under artificial light, a marijuana plant can grow from three to six feet tall in three to four months.",
+                    IDL_ST01,17,26,125,34
+    GROUPBOX        "Daily Photoperiod",IDC_STATIC,11,67,137,72
+    LTEXT           "Photoperiod Now:",IDC_STATIC,20,85,60,8
+    LTEXT           "12 hrs 30 mins",IDL_ST02,83,83,56,13,SS_SUNKEN
+    LTEXT           "Plant",IDC_STATIC,167,22,20,8
+    LTEXT           "Lamp",IDC_STATIC,212,22,20,8
+    CONTROL         "",IDL_ST03,"Static",SS_GRAYFRAME | SS_SUNKEN,169,36,12,
+                    92
+END
+
+T_WATER DIALOG DISCARDABLE  0, 0, 250, 150
+STYLE DS_MODALFRAME | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Slider1",IDW_SL01,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_VERT | TBS_TOP | WS_TABSTOP,210,35,21,102
+    CONTROL         "",-1,"Static",SS_ETCHEDFRAME,5,5,240,140
+    GROUPBOX        "Amount (ml)",-1,153,10,86,129
+    GROUPBOX        "Weekly Watering Tip",-1,12,10,136,55
+    LTEXT           "400",-1,192,91,13,8
+    LTEXT           "200",-1,192,107,13,8
+    LTEXT           "0 ml",-1,192,125,13,8
+    LTEXT           "800",-1,192,55,13,8
+    LTEXT           "600",-1,192,73,13,8
+    LTEXT           "1000",-1,190,38,17,8
+    LTEXT           "The amount of water, and how often to water varies with the size of the pots and plants.",
+                    IDW_ST01,17,26,125,34
+    GROUPBOX        "Watering Statistics",-1,11,67,137,72
+    LTEXT           "Last Watered:",-1,20,85,46,8
+    LTEXT           "",IDW_ST02,74,84,65,10,SS_SUNKEN
+    LTEXT           "Current Moisture Level:",-1,20,98,76,10
+    RTEXT           "",IDW_ST03,101,98,38,10,SS_SUNKEN
+    LTEXT           "Current",-1,164,25,24,8
+    LTEXT           "Next",-1,214,25,16,8
+    CONTROL         "",IDW_ST04,"Static",SS_GRAYFRAME | SS_SUNKEN,169,40,12,
+                    92
+    LTEXT           "Water To Add Now:",-1,20,124,76,10
+    RTEXT           "",IDW_ST05,101,123,38,10,SS_SUNKEN
+    LTEXT           "Nutrients Added Today:",-1,20,111,76,10
+    RTEXT           "",IDW_ST06,101,110,38,10,SS_SUNKEN
+END
+
+T_FERTIL DIALOG DISCARDABLE  0, 0, 250, 150
+STYLE DS_MODALFRAME | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Slider1",IDF_SL01,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_VERT | TBS_TOP | WS_TABSTOP,159,32,18,91
+    CONTROL         "Slider1",IDF_SL02,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_VERT | TBS_TOP | WS_TABSTOP,178,32,18,91
+    CONTROL         "Slider1",IDF_SL03,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_VERT | TBS_TOP | WS_TABSTOP,197,32,18,91
+    CONTROL         "Slider1",IDF_SL04,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_VERT | TBS_TOP | WS_TABSTOP,216,32,18,91
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,5,5,240,140
+    GROUPBOX        "Nutrients (grams)",IDC_STATIC,153,10,86,129
+    GROUPBOX        "Weekly Fertilizing Tip",IDC_STATIC,12,10,136,55
+    LTEXT           "The elements Nitrogen, Phosphorus, and Potassium are considered the important nutrients for strong growth. Calcium can be used to control the pH.",
+                    IDF_ST01,17,26,125,34
+    GROUPBOX        "Fertilizing Statistics",IDC_STATIC,11,67,137,72
+    LTEXT           "Last Fertilized:",IDC_STATIC,20,85,46,8
+    LTEXT           "",IDF_ST02,74,84,65,10,SS_SUNKEN
+    LTEXT           "Current Soil pH Level:",IDC_STATIC,20,98,86,8
+    RTEXT           "",IDF_ST03,113,98,25,10,SS_SUNKEN
+    LTEXT           "N",IDC_STATIC,167,23,8,8
+    LTEXT           "P",IDC_STATIC,187,23,8,8
+    LTEXT           "K",IDC_STATIC,206,23,8,8
+    LTEXT           "Ca",IDC_STATIC,223,23,10,8
+    LTEXT           "0.8",IDF_ST04,163,124,12,8
+    LTEXT           "0.3",IDF_ST05,183,124,12,8
+    LTEXT           "0.3",IDF_ST06,201,124,12,8
+    LTEXT           "0.0",IDF_ST07,221,124,12,8
+    RTEXT           "",IDF_ST08,113,123,25,10,SS_SUNKEN
+    LTEXT           "Nutrients To Add Now:",IDC_STATIC,20,124,73,8
+    RTEXT           "",IDF_ST09,113,110,25,10,SS_SUNKEN
+    LTEXT           "Nutrients Added Today:",IDC_STATIC,20,111,76,8
+END
+
+T_PRUNING DIALOG DISCARDABLE  0, 0, 250, 150
+STYLE DS_MODALFRAME | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",-1,"Static",SS_ETCHEDFRAME,5,5,240,140
+    CONTROL         "Slider1",IDP_SL01,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_VERT | TBS_TOP | WS_TABSTOP,210,24,21,111
+    GROUPBOX        "Quantity (tips)",-1,153,10,86,129
+    GROUPBOX        "Weekly Pruning Tip",-1,12,10,136,55
+    LTEXT           "Each time a growing tip is clipped, the stem branches into two shoots, which begin to grow from the nearest leaf axils.",
+                    IDP_ST01,17,26,125,34
+    GROUPBOX        "Pruning Statistics",-1,11,67,137,72
+    LTEXT           "Last Pruned:",-1,20,85,42,8
+    LTEXT           "",IDP_ST02,74,84,65,10,SS_SUNKEN
+    LTEXT           "Available Growing Tips:",-1,20,98,79,10
+    RTEXT           "",IDP_ST03,113,98,25,10,SS_SUNKEN
+    LTEXT           "Tips To Prune Now:",-1,20,124,64,8
+    RTEXT           "",IDP_ST04,113,123,25,10,SS_SUNKEN
+    LTEXT           "Tips Pruned Today:",-1,20,112,63,8
+    RTEXT           "",IDP_ST05,113,111,25,10,SS_SUNKEN
+    CONTROL         "",IDW_ST04,"Static",SS_GRAYFRAME | SS_SUNKEN,169,31,12,
+                    101
+END
+
+T_STATS DIALOG DISCARDABLE  0, 0, 250, 150
+STYLE DS_MODALFRAME | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,5,5,240,140
+    GROUPBOX        "Plant Statistics",IDS_ST17,11,10,137,129
+    LTEXT           "Date Planted:",IDC_STATIC,20,25,44,8
+    LTEXT           "Growth Stage:",IDC_STATIC,20,39,46,8
+    LTEXT           "Gender (sex):",IDC_STATIC,20,53,43,8
+    LTEXT           "13 June",IDS_ST01,71,24,68,10,SS_SUNKEN
+    LTEXT           "Seedling",IDS_ST02,71,38,68,10,SS_SUNKEN
+    LTEXT           "Undetermined",IDS_ST03,71,52,68,10,SS_SUNKEN
+    LTEXT           "Growing Mass:",IDC_STATIC,158,109,50,8
+    LTEXT           "Pruned Mass:",IDC_STATIC,158,123,44,8
+    RTEXT           "127",IDS_ST15,210,108,22,10,SS_SUNKEN
+    RTEXT           "13",IDS_ST16,210,122,22,10,SS_SUNKEN
+    LTEXT           "Last Watered:",IDC_STATIC,20,95,46,8
+    LTEXT           "Last Fertilized:",IDC_STATIC,20,109,46,8
+    LTEXT           "Last Pruned:",IDC_STATIC,20,123,41,8
+    LTEXT           "11 June",IDS_ST06,71,94,68,10,SS_SUNKEN
+    LTEXT           "8 June",IDS_ST07,71,108,68,10,SS_SUNKEN
+    LTEXT           "17 May",IDS_ST08,71,122,68,10,SS_SUNKEN
+    LTEXT           "Photoperiod:",IDC_STATIC,20,67,41,8
+    LTEXT           "12 hrs 30 mins",IDS_ST04,71,66,68,10,SS_SUNKEN
+    GROUPBOX        "Plant Health",IDC_STATIC,153,10,86,129
+    RTEXT           "57",IDS_ST09,210,24,22,10,SS_SUNKEN
+    RTEXT           "4",IDS_ST12,210,66,22,10,SS_SUNKEN
+    RTEXT           "7",IDS_ST13,210,80,22,10,SS_SUNKEN
+    RTEXT           "4",IDS_ST14,210,94,22,10,SS_SUNKEN
+    LTEXT           "Height (mm):",IDC_STATIC,158,25,43,8
+    LTEXT           "Moisture (ml):",IDC_STATIC,158,67,42,8
+    LTEXT           "Soil (pH):",IDC_STATIC,158,81,30,8
+    LTEXT           "Growing Tips:",IDC_STATIC,158,95,44,8
+    LTEXT           "Last Visited:",IDC_STATIC,20,81,40,8
+    LTEXT           "13 June",IDS_ST05,71,80,68,10,SS_SUNKEN
+    RTEXT           "4",IDS_ST10,210,38,22,10,SS_SUNKEN
+    LTEXT           "Health (%):",IDC_STATIC,158,39,35,8
+    RTEXT           "4",IDS_ST11,210,52,22,10,SS_SUNKEN
+    LTEXT           "Potency THC:",IDC_STATIC,158,53,46,8
+END
+
+HISTORY DIALOGEX 0, 0, 365, 175
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "Growth Log"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "List1",IDH_LV01,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHAREIMAGELISTS | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,5,5,355,146,WS_EX_CLIENTEDGE
+    CONTROL         "Plant 1",IDC_RB01,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,10,159,79,11
+    CONTROL         "Plant 2",IDC_RB02,"Button",BS_AUTORADIOBUTTON,97,159,79,
+                    11
+    CONTROL         "Plant 3",IDC_RB03,"Button",BS_AUTORADIOBUTTON,184,159,
+                    79,11
+    DEFPUSHBUTTON   "&Close",IDCANCEL,330,157,30,15
+    PUSHBUTTON      "E&xport",IDC_BT01,300,157,26,15
+    PUSHBUTTON      "&Print",IDC_BT02,267,157,28,15
+END
+
+OBJECT DIALOGEX 0, 0, 395, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "HighGrow Program Objectives"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Exit",IDCANCEL,365,181,25,15
+    CONTROL         "&Introduction",IDC_RB01,"Button",BS_AUTORADIOBUTTON | 
+                    BS_CENTER | BS_PUSHLIKE | BS_MULTILINE | WS_GROUP | 
+                    WS_TABSTOP,5,181,54,15
+    CONTROL         "&Planting",IDC_RB02,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,64,181,54,15
+    CONTROL         "&Grow Room",IDC_RB03,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,123,181,54,15
+    CONTROL         "&Life Cycle",IDC_RB04,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,182,181,54,15
+    CONTROL         "&Harvesting",IDC_RB05,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,241,181,54,15
+    CONTROL         "&Registration",IDC_RB06,"Button",BS_AUTORADIOBUTTON | 
+                    BS_PUSHLIKE,300,181,54,15
+    CONTROL         "",IDC_ST01,"Static",SS_ETCHEDFRAME | SS_SUNKEN,5,5,385,
+                    172
+END
+
+GRAPHS DIALOGEX 0, 0, 401, 173
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "Growth Chart"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Health (%)",IDC_RB01,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,14,7,49,10
+    CONTROL         "Height (mm)",IDC_RB02,"Button",BS_AUTORADIOBUTTON,76,7,
+                    49,10
+    CONTROL         "Mass (grams)",IDC_RB03,"Button",BS_AUTORADIOBUTTON,138,
+                    7,57,10
+    CONTROL         "Potency (THC)",IDC_RB04,"Button",BS_AUTORADIOBUTTON,208,
+                    7,63,10
+    CONTROL         "Moisture (ml)",IDC_RB05,"Button",BS_AUTORADIOBUTTON,284,
+                    7,55,10
+    CONTROL         "Soil (pH)",IDC_RB06,"Button",BS_AUTORADIOBUTTON,352,7,
+                    41,10
+    DEFPUSHBUTTON   "&Close",IDCANCEL,346,144,50,26
+    CONTROL         "",IDC_CHART,"Static",SS_GRAYFRAME | SS_SUNKEN,5,21,391,
+                    117,WS_EX_CLIENTEDGE
+    CONTROL         "",IDC_STC01,"Static",SS_GRAYFRAME | SS_SUNKEN,5,144,86,
+                    26
+    CONTROL         "",IDC_STC02,"Static",SS_GRAYFRAME | SS_SUNKEN,101,144,
+                    86,26
+    CONTROL         "",IDC_STC03,"Static",SS_GRAYFRAME | SS_SUNKEN,196,144,
+                    86,26
+    PUSHBUTTON      "&Print",IDC_BT01,301,144,40,26
+END
+
+PLANTING DIALOGEX 0, 0, 337, 211
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "Planting Seeds.."
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_LB01,12,27,60,142,LBS_SORT | LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_ED01,156,170,90,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Plant This Seed",IDC_BT01,254,186,70,15
+    DEFPUSHBUTTON   "&Continue",IDCANCEL,12,187,59,15
+    PUSHBUTTON      "I&mport",IDC_BT02,12,172,28,12
+    PUSHBUTTON      "E&xport",IDC_BT03,43,172,28,12
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,85,5,247,201
+    CTEXT           "Name",IDC_ST01,94,11,230,17,SS_SUNKEN
+    LTEXT           "Plant Name:",IDC_ST08,94,170,61,11
+    LTEXT           "",IDC_ST05,94,93,230,27,SS_SUNKEN
+    LTEXT           "General Description:",IDC_ST04,94,78,100,13
+    LTEXT           "",IDC_ST07,94,144,230,19,SS_SUNKEN
+    LTEXT           "Author's Note:",IDC_ST06,94,129,70,13
+    LTEXT           "Origin:",IDC_ST02,94,35,38,13
+    LTEXT           "",IDC_ST03,94,50,229,19,SS_SUNKEN
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,5,5,73,201
+    CTEXT           "100 Seeds",IDC_ST09,12,11,60,12,SS_SUNKEN
+    LTEXT           "Grow Room:",IDC_ST10,94,187,60,11
+    COMBOBOX        IDC_GRCOMBO,156,185,90,73,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWFIXED | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Pot:",IDC_ST11,256,170,19,11
+    COMBOBOX        IDC_POTCOMBO,281,170,44,66,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+PASSWORD DIALOGEX 0, 0, 195, 210
+STYLE DS_MODALFRAME | WS_POPUP
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDSET,100,166,81,12,ES_UPPERCASE
+    DEFPUSHBUTTON   "&Set Password",IDOK,5,191,86,14
+    PUSHBUTTON      "Ca&ncel",IDCANCEL,104,191,86,14
+    CONTROL         "",IDC_ST02,"Static",SS_GRAYFRAME | SS_SUNKEN,14,29,168,
+                    131
+    CTEXT           "New Password",IDC_ST01,11,11,172,13
+    LTEXT           "Enter a new Password:",IDC_ST03,14,168,78,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,5,5,185,180
+    EDITTEXT        IDC_EDCHECK,100,166,80,12,ES_UPPERCASE | ES_PASSWORD | 
+                    NOT WS_VISIBLE
+END
+
+CHEAT DIALOGEX 0, 0, 217, 229
+STYLE DS_MODALFRAME | WS_POPUP
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "",IDOK,14,204,144,14
+    PUSHBUTTON      "&Help",IDC_BT01,163,204,40,14
+    CONTROL         "",IDC_ST02,"Static",SS_GRAYFRAME | SS_SUNKEN,14,13,190,
+                    135
+    CTEXT           "HighGrow performs regular date and time checks, and has now detected that these have been altered in an attempt to influence the daily plant growth.",
+                    IDC_ST03,16,152,184,48
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,5,5,207,219
+END
+
+HARVEST DIALOGEX 0, 0, 381, 211
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "Harvesting"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "&Cancel",IDCANCEL,275,194,100,14
+    PUSHBUTTON      "&Harvest Now",IDOK,170,194,100,14
+    CONTROL         "",IDC_ST01,"Static",SS_ETCHEDFRAME | SS_SUNKEN,170,75,
+                    206,112
+    CTEXT           "Harvesting",IDA_ST01,5,5,371,17,SS_SUNKEN
+    LTEXT           "When you harvest your plant, all it's leaves and flowering buds are removed, weighed and graded according to their potency. The health, potency, height and weight are recorded in the plant log and will be printed out on a HighGrow certificate.",
+                    IDC_STATIC,171,33,200,40
+    LTEXT           "Seed Variety:",IDA_ST11,180,83,82,12
+    LTEXT           "Days of Growth:",IDA_ST12,180,97,82,12
+    LTEXT           "Growth Stage:",IDA_ST13,180,112,82,12
+    LTEXT           "Plant Health:",IDA_ST14,180,126,82,12
+    LTEXT           "Plant Potency:",IDA_ST15,180,140,82,12
+    LTEXT           "Plant Height",IDA_ST16,180,155,82,12
+    LTEXT           "",IDA_ST02,276,85,91,10
+    LTEXT           "",IDA_ST03,276,99,91,10
+    LTEXT           "",IDA_ST04,276,114,91,10
+    LTEXT           "",IDA_ST05,276,128,91,10
+    LTEXT           "",IDA_ST06,276,142,91,10
+    LTEXT           "",IDA_ST07,276,157,91,10
+    CONTROL         "",IDA_STPIC,"Static",SS_GRAYFRAME | SS_SUNKEN,5,28,157,
+                    180,WS_EX_CLIENTEDGE
+    LTEXT           "Harvested Mass:",IDA_ST17,180,169,82,12
+    LTEXT           "",IDA_ST08,276,171,91,10
+END
+
+PRINT DIALOGEX 22, 17, 223, 172
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "Harvest Confirmation"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_ED01,115,114,93,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Stop... I don't want\nto harvest just yet !!",IDCANCEL,
+                    115,135,103,32,BS_MULTILINE | WS_GROUP
+    PUSHBUTTON      "&Test Print",IDC_BT01,5,135,48,14,WS_GROUP
+    PUSHBUTTON      "&Final Print",IDOK,60,135,48,14,WS_GROUP
+    PUSHBUTTON      "&Harvest without Printing",IDC_BT02,5,153,103,14,
+                    WS_GROUP
+    CTEXT           "Final Confirmation",IDC_ST01,12,11,199,17,SS_SUNKEN
+    LTEXT           "Please Note:",IDS_ST01,16,40,86,11
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,5,5,213,127
+    LTEXT           "When you harvest a plant by printing a HighGrow certificate, it's stem will be cut off at the base and the pot prepared with fresh soil for the next seed.",
+                    IDC_STATIC,16,55,196,28
+    ICON            "DLG_ICON",IDC_STATIC,191,32,18,20
+    LTEXT           "Enter your Name:",IDS_ST02,17,114,95,12
+    LTEXT           "If a female plant has been pollinated by a male plant, seeds should develop. These seeds will automatically be added to the HighGrow seedlist, but may also be exported to a file.",
+                    IDC_STATIC,16,83,192,28
+END
+
+PLANTLOG DIALOGEX 0, 0, 371, 211
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "HighGrow Harvested Plants Log"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LISTBOX         IDG_LB01,12,16,135,186,LBS_SORT | LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "&Continue",IDOK,160,194,206,14
+    CTEXT           "Name",IDG_ST01,159,5,207,17,SS_SUNKEN
+    LTEXT           "Grower's Name:",IDG_ST02,169,38,82,12
+    LTEXT           "A",IDG_ST20,265,41,91,10,SS_SUNKEN
+    LTEXT           "Seed Variety:",IDG_ST03,169,52,82,12
+    LTEXT           "A",IDG_ST21,265,55,91,10,SS_SUNKEN
+    LTEXT           "Date Planted:",IDG_ST04,169,66,82,12
+    LTEXT           "A",IDG_ST22,265,69,91,10,SS_SUNKEN
+    LTEXT           "Date Harvested:",IDG_ST05,169,80,82,12
+    LTEXT           "A",IDG_ST23,265,83,91,10,SS_SUNKEN
+    LTEXT           "Days of Growth:",IDG_ST06,169,94,82,12
+    LTEXT           "A",IDG_ST24,265,97,91,10,SS_SUNKEN
+    LTEXT           "Growth Stage:",IDG_ST07,169,108,82,12
+    LTEXT           "A",IDG_ST25,265,111,91,10,SS_SUNKEN
+    LTEXT           "Plant Health:",IDG_ST08,169,122,82,12
+    LTEXT           "A",IDG_ST26,265,125,91,10,SS_SUNKEN
+    LTEXT           "Plant Potency:",IDG_ST09,169,136,82,12
+    LTEXT           "A",IDG_ST27,265,139,91,10,SS_SUNKEN
+    LTEXT           "Plant Height",IDG_ST10,169,150,82,12
+    LTEXT           "A",IDG_ST28,265,153,91,10,SS_SUNKEN
+    LTEXT           "Harvested Mass:",IDG_ST11,169,164,82,12
+    LTEXT           "A",IDG_ST29,265,167,91,10,SS_SUNKEN
+    GROUPBOX        "Plant List",IDC_STATIC,5,5,149,203
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,160,28,206,155
+END
+
+CALC DIALOGEX 22, 17, 274, 57
+STYLE DS_MODALFRAME | DS_SETFOREGROUND | DS_CONTROL | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE
+EXSTYLE WS_EX_TOOLWINDOW
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "HighGrow - Legal Marijuana Growing",IDC_ST01,32,8,209,
+                    13,SS_SUNKEN
+    LTEXT           "Calculating Plant Growth...",IDS_ST01,6,31,258,10
+    ICON            "DLG_ICON",IDC_STATIC,247,5,21,20
+    ICON            "DLG_ICON",IDC_STATIC,5,5,21,20
+    CONTROL         "Progress1",IDC_PR01,"msctls_progress32",0x0,6,41,260,9
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,1,1,272,55
+END
+
+BREEDING DIALOGEX 0, 0, 257, 175
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "Breeding New Hybrids.."
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_ED01,134,53,110,12
+    EDITTEXT        IDC_ED03,13,83,230,29,ES_MULTILINE
+    EDITTEXT        IDC_ED04,13,126,230,21,ES_MULTILINE
+    PUSHBUTTON      "&Continue",IDOK,140,150,48,14
+    DEFPUSHBUTTON   "Ca&ncel",IDCANCEL,194,150,48,14
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,5,5,247,165
+    LTEXT           "New Hybrid's Name:",IDC_ST03,13,54,111,12
+    LTEXT           "General Description:",IDC_ST05,13,70,100,12
+    LTEXT           "Grower's Hint:",IDC_ST06,13,114,96,12
+    CTEXT           "%s has developed seeds",IDC_ST02,14,10,230,15,SS_SUNKEN
+    LTEXT           "",IDC_ST01,14,29,230,19,SS_SUNKEN
+    LTEXT           "(please be a bit creative here, as your hybrid could easily become a winner!)",
+                    IDC_ST07,14,149,122,18
+END
+
+ROOMEDIT DIALOGEX 0, 0, 379, 222
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "Add or Edit Grow Room.."
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_LB01,10,25,90,160,LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CM02,10,187,90,71,CBS_DROPDOWNLIST | 
+                    CBS_NOINTEGRALHEIGHT | WS_TABSTOP
+    COMBOBOX        IDC_CM03,10,202,90,90,CBS_DROPDOWNLIST | 
+                    CBS_NOINTEGRALHEIGHT | WS_TABSTOP
+    LISTBOX         IDC_LB02,104,25,76,160,LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CM04,104,202,76,133,CBS_DROPDOWNLIST | 
+                    CBS_NOINTEGRALHEIGHT | WS_TABSTOP
+    CONTROL         "&Clock",IDC_CB01,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    198,26,57,11,WS_EX_TRANSPARENT
+    CONTROL         "&Thermometer",IDC_CB02,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,37,57,11,WS_EX_TRANSPARENT
+    CONTROL         "&Hygrometer",IDC_CB03,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,48,57,11,WS_EX_TRANSPARENT
+    CONTROL         "&Magnifier",IDC_CB04,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,59,57,11,WS_EX_TRANSPARENT
+    PUSHBUTTON      "&Vacation Mode Setup",IDC_BT02,275,55,93,13
+    COMBOBOX        IDC_CM01,193,187,88,95,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Delete Grow Room",IDC_BT01,287,187,88,14
+    DEFPUSHBUTTON   "&Save Changes",IDOK,193,203,88,14
+    PUSHBUTTON      "Cancel",IDCANCEL,287,203,88,14
+    CONTROL         "",IDC_STROOM,"Static",SS_ETCHEDFRAME,192,77,183,107
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,5,5,181,214
+    CTEXT           "Shades",IDC_ST01,10,10,90,12,SS_SUNKEN
+    CTEXT           "Pots",IDC_ST04,104,10,76,12,SS_SUNKEN
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,192,5,72,68
+    CTEXT           "Gauges",IDC_ST07,198,10,60,12,SS_SUNKEN
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,269,5,106,68
+    CTEXT           "Vacation Mode",IDC_ST08,274,10,93,12,SS_SUNKEN
+    LTEXT           "Rasta Robbie will care for your plants while you're away on vacation.",
+                    IDC_STATIC,276,27,89,25
+    CTEXT           "Static",IDC_ST02,104,187,76,12,SS_SUNKEN
+END
+
+ROOMADD DIALOGEX 0, 0, 243, 216
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CLIENTEDGE
+CAPTION "Add Grow Room.."
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_CM01,127,165,111,95,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "&Add Room",IDOK,127,180,54,14
+    PUSHBUTTON      "Cancel",IDCANCEL,185,180,54,14
+    CONTROL         "",IDC_STROOM,"Static",SS_ETCHEDFRAME,5,27,234,134
+    LTEXT           "Grow Room Image Name:",IDC_ST03,6,166,104,11
+    LTEXT           "Grow Room Number:",IDC_ST04,6,183,104,11
+    LTEXT           "Download more Room Images from:",IDC_ST05,6,200,139,13
+    RTEXT           "http://www.highgrow.us",IDC_ST02,146,200,90,13
+    LTEXT           "To add a new Grow Room, simply select a Room Image Name from the list below and click the Add Room button.",
+                    IDC_ST01,10,5,223,20
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+HIGHGROW                ICON    DISCARDABLE     "highgrow.ICO"
+WATER                   ICON    DISCARDABLE     "Water.ico"
+LIGHT                   ICON    DISCARDABLE     "Light.ico"
+STATS                   ICON    DISCARDABLE     "Status.ico"
+PRUNE                   ICON    DISCARDABLE     "icon1.ico"
+FERTIL                  ICON    DISCARDABLE     "ico00001.ico"
+APP_ICON_EX             ICON    DISCARDABLE     "Appleaf.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "ABOUT", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 344
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 180
+    END
+
+    "T_LIGHT", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 245
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 145
+    END
+
+    "T_WATER", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 245
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 145
+    END
+
+    "T_FERTIL", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 245
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 145
+    END
+
+    "T_PRUNING", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 245
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 145
+    END
+
+    "T_STATS", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 245
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 145
+    END
+
+    "HISTORY", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 360
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 172
+    END
+
+    "OBJECT", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 390
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 196
+    END
+
+    "GRAPHS", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 396
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 170
+    END
+
+    "PLANTING", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 332
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 206
+    END
+
+    "PASSWORD", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 190
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 205
+    END
+
+    "CHEAT", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 212
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 224
+    END
+
+    "HARVEST", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 376
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 208
+    END
+
+    "PRINT", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 218
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 167
+    END
+
+    "PLANTLOG", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 366
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 208
+    END
+
+    "CALC", DIALOG
+    BEGIN
+        LEFTMARGIN, 1
+        RIGHTMARGIN, 273
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 56
+    END
+
+    "BREEDING", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 252
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 170
+    END
+
+    "ROOMEDIT", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 374
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 217
+    END
+
+    "ROOMADD", DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 238
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 213
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+LEAF                    BITMAP  DISCARDABLE     "Leaf.bmp"
+IDB_TOOLBMP             BITMAP  DISCARDABLE     "toolbar.bmp"
+SEEDLIST                BITMAP  DISCARDABLE     "seedlist.bmp"
+BLACK                   BITMAP  DISCARDABLE     "black.bmp"
+LFRD                    BITMAP  DISCARDABLE     "LFRD.bmp"
+LFLA                    BITMAP  DISCARDABLE     "LFLA.bmp"
+LFLB                    BITMAP  DISCARDABLE     "LFLB.bmp"
+LFLC                    BITMAP  DISCARDABLE     "LFLC.bmp"
+LFLD                    BITMAP  DISCARDABLE     "LFLD.bmp"
+LFRA                    BITMAP  DISCARDABLE     "LFRA.bmp"
+LFRB                    BITMAP  DISCARDABLE     "LFRB.bmp"
+LFRC                    BITMAP  DISCARDABLE     "LFRC.bmp"
+LEAFTILE                BITMAP  DISCARDABLE     "leaftile.bmp"
+LFEU                    BITMAP  DISCARDABLE     "LFEU.bmp"
+LFED                    BITMAP  DISCARDABLE     "LFED.bmp"
+PASSLEAF                BITMAP  DISCARDABLE     "PassLeaf.bmp"
+NOENTRY                 BITMAP  DISCARDABLE     "NoEntry.bmp"
+SLICK                   BITMAP  DISCARDABLE     "slick.bmp"
+LEAF256                 BITMAP  DISCARDABLE     "Leaf256.bmp"
+BDF                     BITMAP  DISCARDABLE     "bdf.bmp"
+DLGLEAVES               BITMAP  DISCARDABLE     "dlgleaf.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+HOTKEYS ACCELERATORS DISCARDABLE 
+BEGIN
+    "1",            IDM_ACT01,              VIRTKEY, CONTROL, NOINVERT
+    "1",            IDM_HIST01,             VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    "2",            IDM_ACT02,              VIRTKEY, CONTROL, NOINVERT
+    "2",            IDM_HIST02,             VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    "3",            IDM_ACT03,              VIRTKEY, CONTROL, NOINVERT
+    "3",            IDM_HIST03,             VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    "A",            IDM_ABOUT,              VIRTKEY, CONTROL, NOINVERT
+    "C",            IDM_GROWCHART,          VIRTKEY, CONTROL, NOINVERT
+    "D",            IDM_EDITGROW,           VIRTKEY, CONTROL, NOINVERT
+    "E",            IDM_AUTOGROW,           VIRTKEY, CONTROL, NOINVERT
+    "G",            IDM_GROWROOM,           VIRTKEY, CONTROL, NOINVERT
+    "H",            IDM_PLOG,               VIRTKEY, CONTROL, NOINVERT
+    "K",            IDM_ALARMSET,           VIRTKEY, CONTROL, NOINVERT
+    "L",            IDM_LOCK,               VIRTKEY, CONTROL, NOINVERT
+    "M",            IDM_SOUND,              VIRTKEY, CONTROL, NOINVERT
+    "N",            IDM_NEWGROW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            IDM_OBJECTIVES,         VIRTKEY, CONTROL, NOINVERT
+    "P",            IDM_PLANTING,           VIRTKEY, CONTROL, NOINVERT
+    "S",            IDM_SOUNDON,            VIRTKEY, CONTROL, NOINVERT
+    "T",            IDM_HELPTIPS,           VIRTKEY, CONTROL, NOINVERT
+    "U",            IDM_AUTOLOAD,           VIRTKEY, CONTROL, NOINVERT
+    "V",            IDM_VACMODEON,          VIRTKEY, CONTROL, NOINVERT
+    "W",            IDM_ROBBIE,             VIRTKEY, CONTROL, NOINVERT
+    "X",            IDM_EXIT,               VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDH_ST01                "Day"
+    IDH_ST02                "Date"
+    IDH_ST03                "Health"
+    IDH_ST04                "Height"
+    IDH_ST05                "Mass"
+    IDH_ST06                "Potency"
+    IDH_ST07                "Moisture"
+    IDH_ST08                "Fertilizer"
+    IDH_ST09                "Soil pH"
+    IDH_ST10                "Pruned"
+    IDS_BT01                "Slick's Surprise"
+    IDS_BT02                "Jack Flash"
+    IDS_BT03                "Super Crystal"
+    IDS_BT04                "Ruderalis Skunk"
+    IDS_BT05                "White Shark"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_BT06                "AK-47"
+    IDS_BT07                "Blueberry"
+    IDS_BT08                "White Rhino"
+    IDS_BT09                "Amstel Gold"
+    IDS_BT10                "Holland's Hope"
+    IDS_BT11                "Orange Bud"
+    IDS_BT12                "Thai"
+    IDS_BT13                "Super Skunk"
+    IDS_BT14                "Durban Poison"
+    IDS_BT15                "Silver Haze"
+    IDS_BT16                "Hindu Kush"
+    IDS_BT17                "Shiva Skunk"
+    IDS_BT18                "California Gold"
+    IDS_BT19                "Maui Wowie"
+    IDS_BT20                "Sweet Dreams"
+    IDS_BT21                "Original Big Bud"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_OBJECTIVES          "HighGrow Objectives"
+    IDC_TBCOMBO             "Plant Name"
+    IDC_TBGRCOMBO           "Grow Room Name"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_GROWCHART           "Daily Growth Chart"
+    IDM_PLANTING            "Planting Seeds"
+    IDM_SOUND               "Start Music Playback"
+    IDM_NEWGROW             "New/Edit Grow Room"
+    IDM_GROWROOM            "Enter Grow Room"
+    IDM_ROBBIE              "Rasta Robbie's 10 Golden Rules"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_HELPCONTENTS        "Help Contents"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_STATS               "Activities for"
+    IDM_LIGHT               "Lighting for"
+    IDM_WATER               "Watering"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDM_FERT                "Fertilizing"
+    IDM_PRUNE               "Pruning"
+    IDM_HARVEST             "Harvesting"
+    IDM_GLOG                "Growth Log for"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDSERR_DLL_LOAD         "Please re-install this program to ensure that the file \r""%s"" can be found in the current directory !!"
+    IDSERR_COMMENT_LOAD     "This comment cannot be found in the HighGrow Comments Library !!"
+    IDSERR_NAME_SEED        "Please enter any name for your marijuana plant before planting this seed!!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SIO_12              "This indoor variety, developed in Holland, is a pure Sativa, selected for it's short size and early flowering potential."
+    IDS_SIO_13              "Super Skunk is the variety of Cannabis Indica, that was developed by crossing some of the best skunk seeds with their Afghani ancestors.\n\n"
+    IDS_SIO_14              "Durban is situated on the eastern coast of South Africa and has a warm sub-tropical climate, ideal for growing some very potent marijuana."
+    IDS_SIO_15              "This is the result of years of searching for the ideal Indica/Sativa hybrid which would combine the preferred characteristics of each variety."
+    IDS_SIO_16              "The Hindu Kush is a hybrid of the finest Indica/Sativa strains originating from Afghanistan."
+    IDS_SIO_17              "This is a cross between Skunk and Northern Lights and is one of the most reliable varieties available to indoor growers."
+    IDS_SIO_18              "This seed has its roots in the hilly countryside of Humboldt county, in northern California."
+    IDS_SIO_19              "The finest seed from the finest weed from Hawaii, the island with an ideal marijuana-growing climate."
+    IDS_SIO_20              "This is one of the sweetest smelling skunks of them all, originating from Holland, home to the some of the best developed marijuana hybrids."
+    IDS_SIO_21              "For sheer yield and hybrid vigour, this mainly Indica variety from Holland, is the best yet."
+    IDS_SIO_22              "This is a  3-way hybrid containing Early Pearl, Skunk #1 and Northern Lights. This variety was developed for it's shorter flowering period."
+    IDS_SIO_23              "This southern African country produces and distributes excellent quality marijuana buds, individually wrapped in corn (maize) husks."
+    IDS_SIO_24              "An excellent cross between the world's best Sativa and Indica strains, resulting in a very potent variety with an extremely powerful Sativa high."
+    IDS_SIO_25              "This Indica/Sativa hybrid was developed for it's sweet fruity taste and it's glistening crystaline appearance."
+    IDS_SIO_26              "This great looking ""new seed on the block"" is a cross between the Sensi Star and the Warlock hybrids."
+    IDS_SIO_27              "This fantastic new seed is an Afgan-White Widow hybrid, originally based on the K2 strain."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SIO_28              "This mainly Sativa strain is cultivated in greenhouses in Switzerland during the cold winter seasons."
+    IDS_SIO_29              "The Kali Mist is a popular Sativa strain developed for it's bushy long branches filled with small potent buds."
+    IDS_SIO_30              "This Indica/Sativa hybrid is perfectly suited to growing in an indoor or outdoor greenhouse."
+    IDS_SIG_01              "Plants grown from these seeds are guaranteed to grow tall and strong with long branches filled with big sticky buds. These plants should do well outdoors, in a greenhouse, or in a growroom."
+    IDS_SIG_02              "The Jack Herer hybrid was developed from a secret combination of three different varieties. Combined with the heady Indica Skunk variety, this seed has proved to be an excellent choice."
+    IDS_SIG_03              "This plant may not develop huge buds, but as these buds are so compact and potent, coated with sweet smelling crystaline resin, this seed is an excellent choice."
+    IDS_SIG_04              "The ruderalis is an early flowering, hempy plant that grows freely in some parts of Eastern Europe and the Soviet Union. Combined with Skunk, it provides excellent buds with early flowering characteristics."
+    IDS_SIG_05              "The orange haired fullness of the super skunk glistens in the crystal rain of its widow origins. This hybrid was awarded a second prize at the tenth annual Cannabis Cup awards."
+    IDS_SIG_06              "Originally named Special K, this Sativa-Indica hybrid produces large, fluffy, dark-green buds, covered with tufts of red hair. The aroma is spicy with a slight sandalwood taste."
+    IDS_SIG_07              "This plant forms into a dense and stout bush, developing buds with red, purple and blue hairs.The finished product has a very fruity aroma and strong taste of blueberry."
+    IDS_SIG_08              "This is an excellent variety for both indoor and outdoor growers. It is about 60% Indica and 40% Sativa and is related to the White Widow hybrid."
+    IDS_SIG_09              "This variety develops plants with big heavy branches, filled with long compact resinous buds. Amstel is an excellent outdoor variety which is easy to grow."
+    IDS_SIG_10              "This Indica strain, specifically developed for it's outdoor potential, is especially mould and pest resistant. It produces bushy plants with buds that deliver a knock-out blow."
+    IDS_SIG_11              "All of these plants display that typically Skunky appearance, growing into small compact bushes with thick, hard, resinous buds, filled with orange pistils."
+    IDS_SIG_12              "This variety produces large buds full of resin, with typical Thai flavor and aroma. This plant is easy to cultivate and you could expect very high yields."
+    IDS_SIG_13              "This is not a pleasant smelling plant at all, and brushing against it causes the entire room to be filled with a powerful skunky aroma. Despite it's smell, the high is very pleasant."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SIG_30              "This plant has dark-green medium sized leaves and develops buds which are coated with long orange-brown hairs. These buds have a sweet, minty aroma and a licorice-like taste."
+    IDS_SIT_01              "Wow, you'd better have a comfortable place to sit down, when you smoke some of this stuff !!"
+    IDS_SIT_02              "These bud will give you a really good smoke, providing a clear and precise stone after only a few tokes."
+    IDS_SIT_03              "The sheer force of the powerful high that these nuggets produce will leave you stunted after only one or two hits."
+    IDS_SIT_04              "These plants might start flowering early, but the flowers develop slowly, some plants finishing late."
+    IDS_SIT_05              "The sheer power of this White Shark is sure to leave your mouth feeling quite numb."
+    IDS_SIT_06              "These buds have a sweet and flowery taste, and produce a strongly mellowing high."
+    IDS_SIT_07              "These buds produce a long and pleasant, euphoric high of the highest quality."
+    IDS_SIT_08              "Delaying the harvest by a week or two, will ensure maximum crystal production."
+    IDS_SIT_09              "With careful curing, these buds smoke soft with a citrus-like aroma and a good strong high."
+    IDS_SIT_10              "This one is highly recommended for outdoor growers who want to grow large Indica plants."
+    IDS_SIT_11              "This highly appreciated variety is easily recognised by it's small, golden, nugget-like buds."
+    IDS_SIT_12              "This one produces a very strong and energetic ""up"" high, which is long-lasting and is sure to give you the munchies."
+    IDS_SIT_13              "This plant should grow very strongly and although it will not grow as tall as some of the sativas available, it should be a bit more potent."
+    IDS_SIT_14              "This seed should require very little special attention to grow into a tall, strong plant."
+    IDS_SIT_15              "Don't expect loads of buds with this one, but you should be able to grow quite a potent plant."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LIGHT_001           "A young marijuana plant tends to grow faster if it is grown under continuous light for the first two months of it's development."
+    IDS_LIGHT_002           "The life cycle of the Cannabis plant is determined by the daily photoperiod (hours of light per day)."
+    IDS_LIGHT_003           "Although natural sunlight is the best form of light for growing plants, their life cycle can be controlled more effectively with artificial lighting."
+    IDS_LIGHT_004           "Although the lamps should be kept as close as possible to the growing tips, they should never be allowed to touch the plants."
+    IDS_LIGHT_005           "The best light for plant growth emits hight intensities of the blue and red bands of the light spectrum."
+    IDS_LIGHT_006           "Fluorescent light is one of the most effective source of artificial light readily available to home growers."
+    IDS_LIGHT_007           "Metal Halide lamps are better than most fluorescents, because they give of more light in the blue and white bands of the light spectrum."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LIGHT_008           "If your lights, after being on for a while, are too hot to touch with your hand, they are probably also too hot to be close to the growing tips."
+    IDS_LIGHT_009           "The amount of light you supply your plants depends on the size of the garden, but at least 20 watts per square foot is recommended."
+    IDS_LIGHT_010           "Although Metal Halide lamps are generally considered a better light source for marijuana growth, they use a lot more electricity than fluorescents.."
+    IDS_LIGHT_011           "Under artificial light, a marijuana plant can grow from three to six feet tall in three to four months."
+    IDS_LIGHT_012           "Plants entering the vegetative stage enjoy up to twenty two hours of light per day, while twelve hours or less is required for flowering."
+    IDS_LIGHT_013           "The more light you give your plants, the faster they will grow."
+    IDS_LIGHT_014           "Lamps should be fixed to the roof in such a way that they can easily be raised as the plant grows in height."
+    IDS_LIGHT_015           "The use of aluminium foil reflectors ensures that the light is spread more uniformly around the plants."
+    IDS_LIGHT_016           "To increase the humidity of the air in a small, enclosed garden, place a small bowl of water in the growroom."
+    IDS_LIGHT_017           "You could use a small fan to cool down your plants, if the lights in a small growroom raise the temperature too much."
+    IDS_LIGHT_018           "Plants grown in conditions of varying daily light patterns will not settle into a regular life cycle and will grow poorly."
+    IDS_LIGHT_019           "If there is insufficient light in the growroom, the plants will often grow tall and thin, in search of the light."
+    IDS_LIGHT_020           "Do not ""wake up"" your plants by switching on the lights if they are in the dark period of their daily light cycle."
+    IDS_LIGHT_021           "Plants grown with a long daily photoperiod, will require more frequent watering than those grown with less light."
+    IDS_LIGHT_022           "Although incandescent, or screw-in light-bulbs are usually not suitable for good growth, they can be used in conjunction with fluorescent tubes."
+    IDS_LIGHT_023           "If the edges of the leaves near the lights and growing tips start curling up, it usually means that they are getting too hot."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LIGHT_024           "A Cannabis plant will grow with as little as six hours of light per day, but requires more than twelve hours per day for good strong growth."
+    IDS_LIGHT_025           "A plant grown with insufficient light may sometimes develop disfigured leaves with only one or two blades per leaf."
+    IDS_LIGHT_026           "If your growroom has a window, you should consider covering it up to prevent daylight from interfering with your own photoperiod."
+    IDS_LIGHT_027           "Paint the walls, and even the floor and roof of your growroom white, for better reflection of the light onto your growing plants."
+    IDS_LIGHT_028           "If you have a few plants growing unevenly under one light, you could raise the pots of the smallest plants by placing them on a few bricks."
+    IDS_LIGHT_029           "Although easy to control, the daily light photoperiod is the single most important factor influencing the growth of your plants."
+    IDS_LIGHT_030           "Cannabis plants require less than twelve hours of light per day for at least two weeks before you can expect to see the first signs of flowers appearing."
+    IDS_LIGHT_031           "Never increase the daily light photoperiod to more than twelve hours, once your plants have started flowering."
+    IDS_LIGHT_032           "A marijuana plant grown indoors with lots of light will often grow larger and more potent than a similar plant growing outdoors in natural light."
+    IDS_LIGHT_033           "To increase the amount of light available to the lower branches, you could mount extra flourescent tubes vertically, onto the walls of your growroom."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_WATER_001           "After the seed has been planted and the soil watered well, you don't need to water again for a few days."
+    IDS_WATER_002           "The amount of water, and how often to water varies with the size of the pots and plants, and the amount of light."
+    IDS_WATER_003           "When plants are small they transpire less, and don't require as frequent watering as when they are larger with more leaves."
+    IDS_WATER_004           "When seedlings have just appeared above the ground, you should water very carefully to prevent the force of the water knocking them over."
+    IDS_WATER_005           "Water provides the hydrogen necessary for plant growth and also carries the nutrients throughout the plant."
+    IDS_WATER_006           "Cannabis plants prefer a regular watering cycle, but should preferably not be watered every day."
+    IDS_WATER_007           "Although the theory that the more water a plant is given, the faster it will grow is incorrect, underwatering will slow plant growth."
+    IDS_WATER_008           "Although the Cannabis plant loves lots of water, the most common cause of death in homegrown plants is from overwatering them."
+    IDS_WATER_009           "A large pot that was saturated before germination may hold enough moisture for the first two to three weeks of growth."
+    IDS_WATER_010           "Plant cells are kept rigid by water, and when there is not enough moisture left in the soil, the leaves start wilting and dropping off."
+    IDS_WATER_011           "The ideal water for your plants should have a neutral pH and be relatively free of chlorine and other harmful chemicals."
+    IDS_WATER_012           "Never allow the soil to become too dry, but never allow it to be constantly wet either."
+    IDS_WATER_013           "Your plants will grow better if you water them during the morning hours rather than the evenings."
+    IDS_WATER_014           "It is always better to use water at room temperature than warm or cold water, to prevent ""shocking"" the root system."
+    IDS_WATER_015           "Too much chlorine in tap water tends to turn the soil a little acidic, and may have to be balanced by adding some calcium."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_WATER_016           "If your water supply is high in chemicals, the best solution is to let the water stand in an open container for a few days before use."
+    IDS_WATER_017           "Although distilled or boiled water will not be harmful to your plants, it does not contain certain minerals beneficial for good growth."
+    IDS_WATER_018           "Plants with a long daily light photoperiod will transpire more and require more frequent watering than plants grown with a shorter light period."
+    IDS_WATER_019           "Lightly spray the leaves of your plants to cool them down after a hot day or long light photoperiod."
+    IDS_WATER_020           "A wilted plant that has been without moisture for several days can still be saved if watered immediately and thoroughly."
+    IDS_WATER_021           "A good sign to water your plants is when the top five or six centimeters of the soil in the pot has dried out completely."
+    IDS_WATER_022           "If your plants start losing more leaves than normal, it may be because you are overwatering them."
+    IDS_WATER_023           "It is better to use a watering can with a sprinkler top than a one with a solid flow, to prevent soil and root disturbance while watering."
+    IDS_WATER_024           "Always water into the pot from above, rather than by filling the tray underneath and letting the plant suck up the water."
+    IDS_WATER_025           "Whereas a small plant growing in a big pot will only require weekly watering, a big plant growing in a small pot may require daily watering."
+    IDS_WATER_026           "It has been suggested that by limiting the watering during flowering, you can positively influence the potency of the plant."
+    IDS_WATER_027           "During flowering, you should check how long after watering your plants start wilting, and then regularly water them one day sooner."
+    IDS_WATER_028           "Although Cannabis is a very hardy and adaptable plant and survives quite well in conditions with little moisture, it prefers a regular watering cycle."
+    IDS_WATER_029           "Always check the pH of your regular water supply to determine it's long-term effect on the soil and growing plants."
+    IDS_WATER_030           "Because some plants grow faster than others, hand watering each pot individually is usually preferable to automatic drip-release systems."
+    IDS_WATER_031           "Rain water often contains nitrogen and other elements, which makes it an excellent source of water for indoor marijuana plants."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_WATER_032           "Cannabis prefers a well-drained soil, so you should not be too concerned if some water runs through the pot and into the tray below."
+    IDS_WATER_033           "As indoor marijuana plants do not receive stem strengthening rain and wind, spraying the leaves with water is a good substitute."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FERT_001            "The elements Nitrogen, Phosphorus, and Potassium are considered the important nutrients for strong growth. Calcium can be used to control the pH."
+    IDS_FERT_002            "Adding ample Nitrogen ensures fast lush growth, enabling a Cannabis plant to outgrow almost any other plant."
+    IDS_FERT_003            "Cannabis' need for phosphorus is the greatest during the seedling and flowering stages of it's life cycle."
+    IDS_FERT_004            "Potassium is associated with strong sturdy stems and plants with a high resistance to diseases and pests."
+    IDS_FERT_005            "Calcium is not added to the soil as a nutrient, but rather to balance the pH of the soil."
+    IDS_FERT_006            "To grow to a large size, marijuana requires a steady supply of nutrients, which should be added to the water on a regular basis."
+    IDS_FERT_007            "The amount of nutrients to add to the water depends on the size of the plant, the size of the pot, and the general condition of the soil."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FERT_008            "Always add water when you add any nutrients or fertilizer to the soil. It is recommended that you dissolve the fertilizer in the water before watering the plant."
+    IDS_FERT_009            "Adding more nutrients than a plant requires will toxify the soil thereby harming plant growth and development."
+    IDS_FERT_010            "Foliar feeding, or spraying the leaves with a fertilizer solution, is an ideal way of fertilizing large plants with nutrient deficiencies."
+    IDS_FERT_011            "Nutrient deficiencies can best be detected by a change in the condition and colour of the leaves."
+    IDS_FERT_012            "Soilless mixtures are a good alternative to using large amounts of soil, the main advantage being that the nutrient balance is easy to control."
+    IDS_FERT_013            "The pH is the measure of how alkaline or acidic the soil is and it's balance is determined by the amount of nutrients present in the soil."
+    IDS_FERT_014            "Although marijuana will grow in soils with a pH between five and nine, it thrives in soils with a neutral pH of around seven."
+    IDS_FERT_015            "Soils with a high content of organic matter are often quite acidic with a fairly low pH. Calcium can be used to balance the pH."
+    IDS_FERT_016            "Most nutrients are soluble in soils with a pH balance of between six and seven and a half."
+    IDS_FERT_017            "Continued use of Nitrogen, Phosphorus and Potassium will lower the pH of the soil. This can be rectified by adding some Calcium."
+    IDS_FERT_018            "To save overfertilized plants, the soil can be leached by removing the top few centimeters and overwatering with lukewarm water."
+    IDS_FERT_019            "Although healthy, strong growing plants love a steady supply of nutrients, you should never fertilize them every day."
+    IDS_FERT_020            "A plant growing in a poor soil, low in nutrients will develop better than a plant growing in overfertilized soil."
+    IDS_FERT_021            "Although Carbon Dioxide cannot be classified as a true nutrient, it can been used to increase growth during the vegetative stage."
+    IDS_FERT_022            "To balance the pH of an acidic soil, crush some egg-shells and soak them in water. Then strain out the shells and pour the water over your plants."
+    IDS_FERT_023            "A soil rich in Nitrogen will increase internodal growth in the stems of developing young marijuana plants."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_FERT_024            "Urine is an excellent source of Nitrogen for marijuana plants, but as it is too concentrated to apply directly, it should always be diluted with water."
+    IDS_FERT_025            "Unless the soil is poor in nutrients, a young seedling growing in a large pot doesn't require any fertilizing for the first few weeks of it's life."
+    IDS_FERT_026            "Although Cannabis does not grow well in a soil with a low nutrient content, this is preferable to a soil that has been toxified by over-fertilization."
+    IDS_FERT_027            "The influence of the soil, and in particular the nutrient content of the soil, to the potency of the plant is something which cannot be overlooked."
+    IDS_FERT_028            "Nitrogen can be positively correlated with higher potency and increased growth, and it is the most influential nutrient available to the grower."
+    IDS_FERT_029            "Organic fertilizers are less concentrated than chemical mixes, and as the nutrients are released more slowly, there is less chance of toxifying the soil."
+    IDS_FERT_030            "A typical program of fertilization may be to fertilize after the fifth week of growth, and then every two weeks thereafter until flowering."
+    IDS_FERT_031            "It is always better to fertilize your plants more often with a more diluted solution, than to give them concentrated doses at longer intervals."
+    IDS_FERT_032            "Always make sure that the fertilizer is completely dissolved in the water before you apply it to your plants."
+    IDS_FERT_033            "It takes less Nitrogen than other nutrients to toxify the soil, and hence there is less margin for error when using it as a fertilizer."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRUNE_001           "Don't prune the growing tip of a young seedling until after the first five-bladed leaves have formed, and the vegetative stage has begun."
+    IDS_PRUNE_002           "Pruning a growing marijuana plant is an easy way of controlling uneven growth without seriously harming the plant."
+    IDS_PRUNE_003           "Each time a growing tip is clipped, the stem branches into two shoots, which begin to grow from the nearest leaf axils."
+    IDS_PRUNE_004           "Many growers prune the growing tips after four to five weeks growth to develop lower branches which will quickly fill all the horizontal space."
+    IDS_PRUNE_005           "The greatest potency of the growing plant is found in the growing tips, and by three months, they should make a high quality smoke."
+    IDS_PRUNE_006           "You can basically prune growing tips at any stage of the plant's development, but just don't overdo it. Severe pruning can harm the growth of the plant."
+    IDS_PRUNE_007           "It is always better to plan a pruning strategy for your developing plants, rather than haphazardly clipping off growing tips on an irregular basis."
+    IDS_PRUNE_008           "Each time a growing tip is removed, the plant takes a few days to recover before new growth resumes on that branch."
+    IDS_PRUNE_009           "The amount of new growth formed with continued pruning is limited by the genetic structure of the seed, and the conditions of the environment."
+    IDS_PRUNE_010           "It is better to prune your plants at an early stage of their development, than towards the end of the vegetative stage or during flowering."
+    IDS_PRUNE_011           "It is always better to prune growing tips in the morning than in the evening, as it gives the plant a full day to recover and heal the wounds."
+    IDS_PRUNE_012           "It is not recommended that you prune every new node in a developing plant. Rather prune every second or third node to allow the plant time to recover."
+    IDS_PRUNE_013           "Wait for the new node to start growing before clipping the young branch a few millimeters above the previous node's newly formed leaves."
+    IDS_PRUNE_014           "It is always better to use a small scissors to prune your plants, than to simply pluck off the growing tips by hand."
+    IDS_PRUNE_015           "Do not prune any growing tips if you notice that your plant's health is declining and it has started losing leaves."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRUNE_016           "Although you should always smoke the pruned growing tips, plants should be pruned to develop their growth rather than for smoking purposes."
+    IDS_PRUNE_017           "While it may be tempting to prune female buds during early flowering, your harvest will be severely reduced by doing so."
+    IDS_PRUNE_018           "Cannabis Indica is a genetically smaller and more bushy plant than Cannabis Sativa and usually requires less pruning."
+    IDS_PRUNE_019           "Never prune more than the single growing tip, or upper-most node, from any branch on the growing plant."
+    IDS_PRUNE_020           "The upper-most growing tip of an unpruned marijuana plant will always be more potent that the top buds of a pruned plant grown in similar conditions."
+    IDS_PRUNE_021           "Pruning the tallest branches ensures that the lower branches grow upwards, forming a larger surface area for the light to cover."
+    IDS_PRUNE_022           "The clear fluid that often flows from the end of a newly pruned branch, contains substances which seal the wound and aid the healing process."
+    IDS_PRUNE_023           "Although it is recommended that you remove all dying leaves from the plant, you should resist the temptation to prune too many healthy leaves."
+    IDS_PRUNE_024           "To grow seedless marijuana, you should remove all the male plants as soon as they are discovered, by pruning the main stem right above the ground."
+    IDS_PRUNE_025           "Although it may be better developed, a pruned marijuana plant does not always produce more buds than an unpruned plant."
+    IDS_PRUNE_026           "Another good reason for pruning is to take cuttings from a strong growing, favourite plant for further hydroponic development."
+    IDS_PRUNE_027           "Marijuana growers often prune their plants in an attempt to limit their height and prevent unwanted detection."
+    IDS_PRUNE_028           "An alternative to pruning for developing growth, is to bend the tops of the branches over and tie the growing tips down with string or wire."
+    IDS_PRUNE_029           "Remember that by pruning a growing tip, you are removing the most potent part of the plant, thereby spoiling it's chance of reaching full maturity."
+    IDS_PRUNE_030           "By pruning all the buds at harvest time, rather than cutting the stem off above the ground, you could easily harvest your plant a second time."
+    IDS_PRUNE_031           "By severely pruning your marijuana plants you are lowering their resistance to harmful natural enemies such as insects, fungus and frost."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PRUNE_032           "You can make a great cup of tea, by chopping up some pruned growing tips and soaking them in boiled water for a few minutes."
+    IDS_PRUNE_033           "Cannabis is a very hardy and adaptable plant, and will endure serious harm to it's leaves, branches and stem before it dies."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_HV01                "This is to certify that ..%s.. has successfully grown a legal marijuana plant named ..%s.."
+    IDS_HV02                "Variety: %s\nGrowth: %i days\nHealth: %i %%\nHeight: %i mm"
+    IDS_HV03                "Planted: %s\nHarvested: %s\nPotency: %1.2f %%THC\nMass: %i grams"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SIO_01              "This seed is the result of six years of crossing African Sativa males with some of the best females from the Haze/Skunk Indica hybrid."
+    IDS_SIO_02              "Jack Flash is excellent hybrid of the Jack Herer and the Super Skunk varieties developed by Sensi Seeds."
+    IDS_SIO_03              "As it's name implies, this hybrid was developed for the sweet, sticky, crystal-coated buds that it's plants produce."
+    IDS_SIO_04              "This hybrid was developed by combining plants from the Cannabis Ruderalis species with some of the best Afghani Indica Skunks."
+    IDS_SIO_05              "The White Shark hybrid, developed by the Green House Seed Company, is a cross between Super Skunk and White Widow."
+    IDS_SIO_06              "This variety is suitably named after the Kalashnikov automatic assault-rifle. It's potency is legendary."
+    IDS_SIO_07              "Developed from new genetic strains that are unique to Europe, Blueberry is approximately 80% Indica and 20% Sativa."
+    IDS_SIO_08              "The origin of the White Rhino is very diverse, including strains from Nepal, India, Lebanon, Vietnam and possibly even Hawaii."
+    IDS_SIO_09              "Amstel Gold is an Indica variety developed in California during the 70's, which has been grown outdoors in Holland since the 80's."
+    IDS_SIO_10              "Holland's Hope is one of the first Dutch outdoor strains, grown in Holland since the early eighties."
+    IDS_SIO_11              "Orange Bud is an excellent indoor variety made up of a selection of 100% pure Skunk varieties."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SIG_14              "Almost all of the marijuana grown in this region is of the Cannabis Sativa variety, and will often grow as high as three meters tall. The most potent buds are rolled tightly in brown paper and offered for sale as 'pencils'."
+    IDS_SIG_15              "Although the cerebral high of the sativa is preferred by many, indoor growers are not too fond of this type. These plants often grow very tall and produce skimpy yields."
+    IDS_SIG_16              "This plant usually develops strong buds with lots of resin and the strong smell of sweet hashish. It is ideally suited to both indoor and outdoor growing, and has a flowering time of approximately 8 to 12 weeks."
+    IDS_SIG_17              "The taste and high are similar to the Skunk and it has that familiar rich sweet pungency, but this variety produces more resin and often has a better yield."
+    IDS_SIG_18              "This strong and healthy Sativa/Indica hybrid produces sweet smelling buds with a high THC content. When flowering, these plants develop huge, beautifully formed colas of tightly growing buds."
+    IDS_SIG_19              "This is a beautifully, hashy smelling plant which is fit for indoor, outdoor and greenhouse cultivation. This (mostly) Sativa hybrid should ensure that you get a medium to tall plant with resinous buds and leaves."
+    IDS_SIG_20              "This plant doesn't usually grow very tall, but it does produce lots of branches, developing large, sweet smelling, resinous buds. The high is very strong, yet wonderfully positive."
+    IDS_SIG_21              "These plants surprise even experienced growers with their huge buds, excellent resin content, good taste and great 'stoney' high. This plant also has a very favourable flower/leaf ratio."
+    IDS_SIG_22              "This plant has both the frosted resinous characteristics of the Northern Lights and the sweetness and good calyx/leaf ratio of the Early Pearls and Skunks."
+    IDS_SIG_23              "The 'gold' in the name Malawi Gold, refers to the colour of the marijuana after a careful (typically underground), curing process. For a Sativa, this slim plant produces a very good yield."
+    IDS_SIG_24              "This is an ideal indoor grower, and will produce potent buds after only a few months growth. The high is very pleasant, but the harvest will not be too spectacular."
+    IDS_SIG_25              "The White Widow seed produces plants which have tightly clustered yellowish-green buds, forming into beautiful swollen colas, glistening with a fine fuzzy crystaline resin."
+    IDS_SIG_26              "This is an incredibly healthy plant with medium sized leaves, which are almost as resin covered as the buds and other interior portions of the growing tips."
+    IDS_SIG_27              "An extremely dense and compact plant with cone shaped buds resembling well trimmed hedges. Matured buds are covered with dark, reddish hairs which are coated with resin crystals."
+    IDS_SIG_28              "These plants have a light brownish-green appearance with medium sized leaves packed tightly around the stalk. The typically Sativa buds have a sweet, spicy aroma and a minty taste."
+    IDS_SIG_29              "This tall Sativa plant develops loads of small buds which are very light in colour and density, and have a fresh and lightly orange-spice scented aroma and flavour."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SIT_16              "Don't expect this plant to reach the ceiling, but it should develop well, and produce big buds."
+    IDS_SIT_17              "With excellent hybrid vigour and yield, this plant should grow very well in the HighGrow greenhouse."
+    IDS_SIT_18              "You could easily harvest up to 700 grams of high quality marijuana after approximately 8 to 10 weeks of flowering."
+    IDS_SIT_19              "Not a bad choice if you're after a great-looking plant with a good THC content. You could harvest over half a kilo of prime buds here!!"
+    IDS_SIT_20              "A great plant, but it will require careful attention to grow as tall as some of the other seeds available here."
+    IDS_SIT_21              "Some females will be extremely heavy yielders, so you should not harvest this plant too early."
+    IDS_SIT_22              "This is one of my favourites and the winner of the 1994 Cannabis Cup competition."
+    IDS_SIT_23              "You should be able to grow a tall, potent plant with big buds and a good concentration of resin."
+    IDS_SIT_24              "This strong-growing plant should produce higher yields if left to flower a little longer than usual."
+    IDS_SIT_25              "These buds have a slight eucalyptus taste when you inhale, and a sharp icyness when you exhale."
+    IDS_SIT_26              "A seriously potent, dizzy sort of high, where your body feels like it is immersed in some sort of heavy liquid."
+    IDS_SIT_27              "A very beautiful and trippy smoke, providing a light, floating feeling and lots of visual effects."
+    IDS_SIT_28              "These buds provide a cerebral uplifiting sort of high, and a heightened state of stonedness."
+    IDS_SIT_29              "For an extremely visual and ""floaty"" sort of high, Kali Mist should not be missed!"
+    IDS_SIT_30              "This plant produces buds which are completely unique in appearance, scent, flavour, and effect!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CR01                "Please enter your name in the edit field provided.\nThis name (or nickname) will be included on your\nplant's harvest certificate."
+    IDS_CR02                "Thank you for registering this version of HighGrow.\n\nYour plants will now be saved from their untimely death\nand can now be nurtured to the ripe old age of 300 days !!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_BT22                "Silver Pearl"
+    IDS_BT23                "Malawi Gold"
+    IDS_BT24                "Northern Lights"
+    IDS_BT25                "White Widow"
+    IDS_BT26                "Star Warz"
+    IDS_BT27                "Himalayan Gold"
+    IDS_BT28                "Winter Koning"
+    IDS_BT29                "Kali Mist"
+    IDS_BT30                "Domina Haze"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_BREED_01            "This new hybrid, grown by %s, was created by crossing a %s female and a %s male plant."
+    IDS_BREED_02            "%s developed this new variety by crossing a %s female and a %s male plant."
+    IDS_BREED_03            "This excellent hybrid was grown by %s by combining the %s female and the %s male varieties."
+    IDS_BREED_04            "This variety, developed by %s, is a hybrid created from a %s female and a %s male plant."
+    IDS_BREED_05            "Here we have a new hybrid developed by %s, by combining a %s female and a %s male plant."
+    IDS_BREED_06            "%s developed this beautiful new hybrid by crossing a %s female and a %s male plant."
+    IDS_BREED_07            "This seed, bred by %s, was developed by crossing a %s female and a %s male plant."
+    IDS_BREED_08            "%s developed this excellent new seed by combining a %s female and a %s male plant."
+    IDS_BREED_09            "This marijuana hybrid, developed by %s, is a cross between the %s female and the %s male plants."
+    IDS_BREED_10            "This great new hybrid, bred by %s, is a cross between a %s female and a %s male plant."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CH01                "HighGrow performs regular date and time checks, and has now detected that today's date is before the date that the program was last started up."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) (unknown sub-lang: 0x7) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENS)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, 0x7
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+DOWNLOADED DIALOG DISCARDABLE  0, 0, 195, 129
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Grow Room Images.."
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,138,108,50,14
+    ICON            "DLG_ICON",IDC_STATIC,167,7,21,20
+    LTEXT           "Download Completed Successfully",IDC_ST01,9,8,152,34
+    CTEXT           "Room Name:",IDC_ST02,16,56,165,14
+    GROUPBOX        "",IDC_STATIC,7,45,181,32
+    LTEXT           "This image can now be selected when adding a new grow room, or to replace the image of an existing room.",
+                    IDC_STATIC,10,83,175,19
+END
+
+VAC_EDIT DIALOGEX 0, 0, 243, 169
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Vacation Mode Setup.."
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Lights",IDC_CB01,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    16,34,45,11
+    EDITTEXT        IDC_ED01,136,33,32,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "Spin1",IDC_SP01,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS,161,33,11,13
+    CONTROL         "Water",IDC_CB02,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    16,51,45,11
+    EDITTEXT        IDC_ED02,66,50,33,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "Spin1",IDC_SP02,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS,92,50,11,13
+    EDITTEXT        IDC_ED03,136,50,24,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "Spin1",IDC_SP03,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,153,50,11,
+                    13
+    CONTROL         "Fertilize",IDC_CB03,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,16,68,45,11
+    EDITTEXT        IDC_ED04,136,67,24,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "Spin1",IDC_SP04,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS,152,67,11,
+                    13
+    EDITTEXT        IDC_ED05,106,82,30,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "Spin1",IDC_SP05,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS,128,82,11,13
+    EDITTEXT        IDC_ED06,106,96,30,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "Spin1",IDC_SP06,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS,128,96,11,13
+    EDITTEXT        IDC_ED07,106,110,30,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "Spin1",IDC_SP07,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS,128,110,11,13
+    EDITTEXT        IDC_ED08,106,124,30,12,ES_RIGHT | ES_NUMBER
+    CONTROL         "Spin1",IDC_SP08,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS,128,124,11,13
+    DEFPUSHBUTTON   "Save",IDOK,106,148,62,14
+    PUSHBUTTON      "Cancel",IDCANCEL,174,148,62,14
+    LTEXT           "ml every",IDC_ST11,104,52,29,9
+    LTEXT           "grams of Nitrogen (N)",IDC_ST14,138,84,68,9
+    LTEXT           "mm above plants.",IDC_ST02,172,35,57,9
+    CTEXT           "Vacation Mode Setup",IDC_STITLE,14,11,215,14,SS_SUNKEN
+    CONTROL         "",IDC_ST2,"Static",SS_ETCHEDFRAME,7,7,229,137
+    LTEXT           "days",IDC_ST04,164,52,19,9
+    LTEXT           "waterings",IDC_ST06,164,69,32,9
+    LTEXT           "Adjust height daily to",IDC_ST01,66,35,67,9
+    LTEXT           "Add nutrients every",IDC_ST13,66,69,67,9
+    LTEXT           "Add:",IDC_STATIC,84,84,19,9
+    LTEXT           "grams of Phosphorus (P)",IDC_ST08,138,99,78,9
+    LTEXT           "Add:",IDC_STATIC,84,99,19,9
+    LTEXT           "grams of Potassium (K)",IDC_ST09,138,113,78,9
+    LTEXT           "Add:",IDC_STATIC,84,113,19,9
+    LTEXT           "grams of Calcium (Ca)",IDC_ST10,138,127,78,9
+    LTEXT           "Add:",IDC_STATIC,84,127,19,9
+END
+
+VAC_ENABLE DIALOGEX 0, 0, 243, 169
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Enable Vacation Mode.."
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_LB01,12,76,87,63,LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Change Settings",IDC_BT01,106,125,123,14,0,
+                    WS_EX_STATICEDGE
+    DEFPUSHBUTTON   "&Enable",IDOK,106,148,62,14
+    PUSHBUTTON      "&Disable",IDCANCEL,174,148,62,14
+    CTEXT           "Vacation Mode ",IDC_ST01,11,11,219,14,SS_SUNKEN
+    CONTROL         "",IDC_ST2,"Static",SS_ETCHEDFRAME,7,7,229,137
+    CTEXT           "Currently Enabled",IDC_ST02,7,150,92,12,SS_SUNKEN
+    LTEXT           "Vacation mode allows you to go away for a few days or weeks, without worrying that your plants could die before your return.",
+                    IDC_STATIC,20,31,204,19
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,12,52,219,1
+    LTEXT           "Lighting:",IDC_ST05,107,81,37,11
+    LTEXT           "Watering:",IDC_ST06,107,95,37,11
+    LTEXT           "Fertilizing:",IDC_ST07,107,108,37,11
+    LTEXT           "100 mm above plant.",IDC_ST08,151,81,78,10,SS_SUNKEN
+    LTEXT           "1000 ml every 3 days.",IDC_ST09,151,95,78,10,SS_SUNKEN
+    LTEXT           "2.5 g every 3 waterings.",IDC_ST10,151,108,78,10,
+                    SS_SUNKEN
+    CTEXT           "Vacation Settings",IDC_ST04,106,61,124,12,SS_SUNKEN
+    CTEXT           "Grow Room",IDC_ST03,12,61,87,12,SS_SUNKEN
+END
+
+ALARMSET DIALOGEX 0, 0, 185, 142
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Set or Unset the HighGrow Alarm.."
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_ROBTEXT,15,80,156,12,ES_AUTOHSCROLL
+    COMBOBOX        IDC_CM01,15,114,28,331,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_CM02,46,114,28,331,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_CM03,77,114,28,331,CBS_DROPDOWNLIST | WS_TABSTOP
+    DEFPUSHBUTTON   "&Set Alarm",IDOK,109,97,62,14
+    PUSHBUTTON      "&Unset Alarm",IDCANCEL,109,113,62,14
+    CTEXT           "HighGrow Alarm Clock",IDC_ST01,14,12,159,14,SS_SUNKEN
+    CONTROL         "",IDC_ST2,"Static",SS_ETCHEDFRAME,7,7,171,127
+    LTEXT           "If you set this alarm clock, Rasta Robbie will\nwhistle and remind you when your time comes.\nNote: This will only work if HighGrow is running.",
+                    IDC_STATIC,16,32,155,26
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,15,62,157,1
+    CTEXT           "Alarm Set",IDC_ST02,15,97,90,12,SS_SUNKEN
+    LTEXT           "Rasta Robbie's Words:",IDC_STATIC,16,68,88,10
+END
+
+MUSIC DIALOGEX 0, 0, 243, 169
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Enable Grow Room Music.."
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_LB01,12,74,155,63,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "&MIDI Files",IDC_MIDI,"Button",BS_AUTORADIOBUTTON,178,
+                    81,46,12
+    CONTROL         "M&P3 Files",IDC_MP3,"Button",BS_AUTORADIOBUTTON,178,94,
+                    46,12
+    PUSHBUTTON      "Play &Song",IDC_BT01,173,115,57,22,0,WS_EX_STATICEDGE
+    DEFPUSHBUTTON   "&Enable",IDOK,106,148,62,14
+    PUSHBUTTON      "&Disable",IDCANCEL,174,148,62,14
+    CTEXT           "Grow Room Music Player",IDC_ST01,11,11,219,14,SS_SUNKEN
+    CONTROL         "",IDC_ST2,"Static",SS_ETCHEDFRAME,7,7,229,137
+    CTEXT           "Currently Enabled",IDC_ST02,7,150,92,12,SS_SUNKEN
+    LTEXT           "You can now play all your favourite MP3 songs, or a selection of MIDI music files when you enter any HighGrow grow room.",
+                    IDC_STATIC,21,31,200,19
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,12,52,219,1
+    CTEXT           "Music Files",IDC_ST03,12,59,155,12,SS_SUNKEN
+    CTEXT           "File Type",IDC_ST04,173,59,57,12,SS_SUNKEN
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,173,74,57,38
+END
+
+DOWNLOAD DIALOGEX 0, 0, 227, 142
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Downloading a Grow Room Image File.."
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Scramble",IDC_BT01,166,80,47,12
+    PUSHBUTTON      "&Download",IDC_BT02,166,96,47,12
+    PUSHBUTTON      "Cancel",IDCANCEL,166,114,47,14
+    EDITTEXT        IDC_ED01,15,80,148,12,ES_AUTOHSCROLL
+    CTEXT           "Beta Tester's Download Dialog",IDC_ST01,14,12,200,14,
+                    SS_SUNKEN
+    CONTROL         "",IDC_ST2,"Static",SS_ETCHEDFRAME,7,7,213,127
+    LTEXT           "This dialog box will allow all beta testers to download any jpg images from any web-sites and then instantly convert them to the encrypted grow room image file format.",
+                    IDC_STATIC,16,32,197,26
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,15,62,197,1
+    LTEXT           "Enter the URL for the image file:",IDC_STATIC,16,68,112,
+                    10
+    EDITTEXT        IDC_ED02,15,96,148,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Note: HighGrow only downloads images from a scrambled URL (this improves our security).",
+                    IDC_STATIC,15,112,145,18
+END
+
+SHAREWARE1 DIALOG DISCARDABLE  0, 0, 186, 70
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "HighGrow Freeware .."
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Cancel",IDCANCEL,129,49,50,14
+    LTEXT           "This feature is not available yet.\n\nPlease be patient...",
+                    IDC_ST04,7,7,172,35
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+ZOOM                    ICON    DISCARDABLE     "ico00002.ico"
+DLG_ICON                ICON    DISCARDABLE     "DlgLeaf.ico"
+APP_ICON                ICON    DISCARDABLE     "app_icon.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "DOWNLOADED", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 188
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    "VAC_EDIT", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 236
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 162
+    END
+
+    "VAC_ENABLE", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 236
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 162
+    END
+
+    "ALARMSET", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 178
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 135
+    END
+
+    "MUSIC", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 236
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 162
+    END
+
+    "DOWNLOAD", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 220
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 135
+    END
+
+    "SHAREWARE1", DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 63
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+DARKNESS                BITMAP  DISCARDABLE     "lightgre.bmp"
+SMALL_POTS              BITMAP  DISCARDABLE     "smallpots.bmp"
+BIG_POTS                BITMAP  DISCARDABLE     "BigPots.bmp"
+SMALL_LIGHTS            BITMAP  DISCARDABLE     "SmallLights.bmp"
+FREESTAR                BITMAP  DISCARDABLE     "FreeStar.bmp"
+BIG_LIGHTS              BITMAP  DISCARDABLE     "BigLights.bmp"
+BACK_HPS                BITMAP  DISCARDABLE     "HPS.bmp"
+BACK_MH                 BITMAP  DISCARDABLE     "MH.bmp"
+TITLE                   BITMAP  DISCARDABLE     "Title.bmp"
+BOOMBOX                 BITMAP  DISCARDABLE     "BoomBox.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// WAVE
+//
+
+ALARM                   WAVE    DISCARDABLE     "Alarm.WAV"
+BOOMCLICK               WAVE    DISCARDABLE     "BoomClick.wav"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// IMAGE
+//
+
+IDR_EMPTYROOM           IMAGE   DISCARDABLE     "Empty room.jpg"
+IDR_ATTIC               IMAGE   DISCARDABLE     "Attic.jpg"
+IDR_BASEMENT            IMAGE   DISCARDABLE     "Basement.jpg"
+IDR_BEDROOM             IMAGE   DISCARDABLE     "Bedroom.jpg"
+#endif    // English (U.S.) (unknown sub-lang: 0x7) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

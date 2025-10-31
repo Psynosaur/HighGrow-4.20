@@ -1,0 +1,736 @@
+# Microsoft Developer Studio Generated NMAKE File, Format Version 4.00
+# ** DO NOT EDIT **
+
+# TARGTYPE "Win32 (x86) Dynamic-Link Library" 0x0102
+
+!IF "$(CFG)" == ""
+CFG=Wallysdk - Win32 Debug
+!MESSAGE No configuration specified.  Defaulting to Wallysdk - Win32 Debug.
+!ENDIF 
+
+!IF "$(CFG)" != "Wallysdk - Win32 Release" && "$(CFG)" !=\
+ "Wallysdk - Win32 Debug" && "$(CFG)" != "Wallysdk - Win32 Wally 95 Release DLL"
+!MESSAGE Invalid configuration "$(CFG)" specified.
+!MESSAGE You can specify a configuration when running NMAKE on this makefile
+!MESSAGE by defining the macro CFG on the command line.  For example:
+!MESSAGE 
+!MESSAGE NMAKE /f "Wallysdk.mak" CFG="Wallysdk - Win32 Debug"
+!MESSAGE 
+!MESSAGE Possible choices for configuration are:
+!MESSAGE 
+!MESSAGE "Wallysdk - Win32 Release" (based on\
+ "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "Wallysdk - Win32 Debug" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "Wallysdk - Win32 Wally 95 Release DLL" (based on\
+ "Win32 (x86) Dynamic-Link Library")
+!MESSAGE 
+!ERROR An invalid configuration is specified.
+!ENDIF 
+
+!IF "$(OS)" == "Windows_NT"
+NULL=
+!ELSE 
+NULL=nul
+!ENDIF 
+################################################################################
+# Begin Project
+# PROP Target_Last_Scanned "Wallysdk - Win32 Wally 95 Release DLL"
+CPP=cl.exe
+RSC=rc.exe
+MTL=mktyplib.exe
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+# PROP BASE Use_MFC 0
+# PROP BASE Use_Debug_Libraries 0
+# PROP BASE Output_Dir "WinRel"
+# PROP BASE Intermediate_Dir "WinRel"
+# PROP Use_MFC 0
+# PROP Use_Debug_Libraries 0
+# PROP Output_Dir ""
+# PROP Intermediate_Dir "WinRel"
+OUTDIR=.
+INTDIR=.\WinRel
+
+ALL : "$(OUTDIR)\Wally96.dll"
+
+CLEAN : 
+	-@erase ".\Wally96.dll"
+	-@erase ".\WinRel\MESSAGES.OBJ"
+	-@erase ".\WinRel\PLAYSND.OBJ"
+	-@erase ".\WinRel\SPRITE32.OBJ"
+	-@erase ".\WinRel\WDLLWIN.OBJ"
+	-@erase ".\WinRel\TOONFILE.OBJ"
+	-@erase ".\WinRel\EXPRESNS.OBJ"
+	-@erase ".\WinRel\ANIMATE.OBJ"
+	-@erase ".\WinRel\BUBBLE.OBJ"
+	-@erase ".\WinRel\WALLYSDK.res"
+	-@erase ".\Wally96.lib"
+	-@erase ".\Wally96.exp"
+
+"$(INTDIR)" :
+    if not exist "$(INTDIR)/$(NULL)" mkdir "$(INTDIR)"
+
+# ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /FR /YX /c
+# ADD CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /c
+# SUBTRACT CPP /Fr
+CPP_PROJ=/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS"\
+ /Fp"$(INTDIR)/Wallysdk.pch" /YX /Fo"$(INTDIR)/" /c 
+CPP_OBJS=.\WinRel/
+CPP_SBRS=
+# ADD BASE MTL /nologo /D "NDEBUG" /win32
+# ADD MTL /nologo /D "NDEBUG" /win32
+MTL_PROJ=/nologo /D "NDEBUG" /win32 
+# ADD BASE RSC /l 0x409 /d "NDEBUG"
+# ADD RSC /l 0x409 /d "NDEBUG"
+RSC_PROJ=/l 0x409 /fo"$(INTDIR)/WALLYSDK.res" /d "NDEBUG" 
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo
+# ADD BSC32 /nologo
+BSC32_FLAGS=/nologo /o"$(OUTDIR)/Wallysdk.bsc" 
+BSC32_SBRS=
+LINK32=link.exe
+# ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /machine:I386
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib /nologo /subsystem:windows /dll /machine:I386 /out:"Wally96.dll"
+LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib\
+ advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib /nologo\
+ /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)/Wally96.pdb"\
+ /machine:I386 /def:".\Wally97.def" /out:"$(OUTDIR)/Wally96.dll"\
+ /implib:"$(OUTDIR)/Wally96.lib" 
+DEF_FILE= \
+	".\Wally97.def"
+LINK32_OBJS= \
+	"$(INTDIR)/MESSAGES.OBJ" \
+	"$(INTDIR)/PLAYSND.OBJ" \
+	"$(INTDIR)/SPRITE32.OBJ" \
+	"$(INTDIR)/WDLLWIN.OBJ" \
+	"$(INTDIR)/TOONFILE.OBJ" \
+	"$(INTDIR)/EXPRESNS.OBJ" \
+	"$(INTDIR)/ANIMATE.OBJ" \
+	"$(INTDIR)/BUBBLE.OBJ" \
+	"$(INTDIR)/WALLYSDK.res"
+
+"$(OUTDIR)\Wally96.dll" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
+    $(LINK32) @<<
+  $(LINK32_FLAGS) $(LINK32_OBJS)
+<<
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+# PROP BASE Use_MFC 0
+# PROP BASE Use_Debug_Libraries 1
+# PROP BASE Output_Dir "WinDebug"
+# PROP BASE Intermediate_Dir "WinDebug"
+# PROP Use_MFC 0
+# PROP Use_Debug_Libraries 1
+# PROP Output_Dir ""
+# PROP Intermediate_Dir "WinDebug"
+OUTDIR=.
+INTDIR=.\WinDebug
+
+ALL : "$(OUTDIR)\Wally96.dll"
+
+CLEAN : 
+	-@erase ".\WinDebug\vc40.pdb"
+	-@erase ".\WinDebug\vc40.idb"
+	-@erase ".\Wally96.dll"
+	-@erase ".\WinDebug\PLAYSND.OBJ"
+	-@erase ".\WinDebug\WDLLWIN.OBJ"
+	-@erase ".\WinDebug\ANIMATE.OBJ"
+	-@erase ".\WinDebug\BUBBLE.OBJ"
+	-@erase ".\WinDebug\SPRITE32.OBJ"
+	-@erase ".\WinDebug\TOONFILE.OBJ"
+	-@erase ".\WinDebug\EXPRESNS.OBJ"
+	-@erase ".\WinDebug\MESSAGES.OBJ"
+	-@erase ".\WinDebug\WALLYSDK.res"
+	-@erase ".\Wally96.ilk"
+	-@erase ".\Wally96.lib"
+	-@erase ".\Wally96.exp"
+	-@erase ".\Wally96.pdb"
+
+"$(INTDIR)" :
+    if not exist "$(INTDIR)/$(NULL)" mkdir "$(INTDIR)"
+
+# ADD BASE CPP /nologo /MT /W3 /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /FR /YX /c
+# ADD CPP /nologo /MTd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /YX /c
+# SUBTRACT CPP /Fr
+CPP_PROJ=/nologo /MTd /W3 /Gm /GX /Zi /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS"\
+ /Fp"$(INTDIR)/Wallysdk.pch" /YX /Fo"$(INTDIR)/" /Fd"$(INTDIR)/" /c 
+CPP_OBJS=.\WinDebug/
+CPP_SBRS=
+# ADD BASE MTL /nologo /D "_DEBUG" /win32
+# ADD MTL /nologo /D "_DEBUG" /win32
+MTL_PROJ=/nologo /D "_DEBUG" /win32 
+# ADD BASE RSC /l 0x409 /d "_DEBUG"
+# ADD RSC /l 0x409 /d "_DEBUG"
+RSC_PROJ=/l 0x409 /fo"$(INTDIR)/WALLYSDK.res" /d "_DEBUG" 
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo
+# ADD BSC32 /nologo
+BSC32_FLAGS=/nologo /o"$(OUTDIR)/Wallysdk.bsc" 
+BSC32_SBRS=
+LINK32=link.exe
+# ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /debug /machine:I386
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib /nologo /subsystem:windows /dll /debug /machine:I386 /out:"Wally96.dll"
+LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib\
+ advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib /nologo\
+ /subsystem:windows /dll /incremental:yes /pdb:"$(OUTDIR)/Wally96.pdb" /debug\
+ /machine:I386 /def:".\Wally97.def" /out:"$(OUTDIR)/Wally96.dll"\
+ /implib:"$(OUTDIR)/Wally96.lib" 
+DEF_FILE= \
+	".\Wally97.def"
+LINK32_OBJS= \
+	"$(INTDIR)/PLAYSND.OBJ" \
+	"$(INTDIR)/WDLLWIN.OBJ" \
+	"$(INTDIR)/ANIMATE.OBJ" \
+	"$(INTDIR)/BUBBLE.OBJ" \
+	"$(INTDIR)/SPRITE32.OBJ" \
+	"$(INTDIR)/TOONFILE.OBJ" \
+	"$(INTDIR)/EXPRESNS.OBJ" \
+	"$(INTDIR)/MESSAGES.OBJ" \
+	"$(INTDIR)/WALLYSDK.res"
+
+"$(OUTDIR)\Wally96.dll" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
+    $(LINK32) @<<
+  $(LINK32_FLAGS) $(LINK32_OBJS)
+<<
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+# PROP BASE Use_MFC 0
+# PROP BASE Use_Debug_Libraries 0
+# PROP BASE Output_Dir "Wally_95"
+# PROP BASE Intermediate_Dir "Wally_95"
+# PROP Use_MFC 0
+# PROP Use_Debug_Libraries 0
+# PROP Output_Dir ""
+# PROP Intermediate_Dir "Wally97_DLL"
+OUTDIR=.
+INTDIR=.\Wally97_DLL
+
+ALL : "$(OUTDIR)\Wally97_DLL\Wally97.dll"
+
+CLEAN : 
+	-@erase ".\Wally97_DLL\Wally97.dll"
+	-@erase ".\Wally97_DLL\EXPRESNS.OBJ"
+	-@erase ".\Wally97_DLL\TOONFILE.OBJ"
+	-@erase ".\Wally97_DLL\BUBBLE.OBJ"
+	-@erase ".\Wally97_DLL\ANIMATE.OBJ"
+	-@erase ".\Wally97_DLL\SPRITE32.OBJ"
+	-@erase ".\Wally97_DLL\MESSAGES.OBJ"
+	-@erase ".\Wally97_DLL\PLAYSND.OBJ"
+	-@erase ".\Wally97_DLL\WDLLWIN.OBJ"
+	-@erase ".\Wally97_DLL\WALLYSDK.res"
+	-@erase ".\Wally97.lib"
+	-@erase ".\Wally97.exp"
+
+"$(INTDIR)" :
+    if not exist "$(INTDIR)/$(NULL)" mkdir "$(INTDIR)"
+
+# ADD BASE CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /FR /YX /c
+# ADD CPP /nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /c
+# SUBTRACT CPP /Fr
+CPP_PROJ=/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS"\
+ /Fp"$(INTDIR)/Wallysdk.pch" /YX /Fo"$(INTDIR)/" /c 
+CPP_OBJS=.\Wally97_DLL/
+CPP_SBRS=
+# ADD BASE MTL /nologo /D "NDEBUG" /win32
+# ADD MTL /nologo /D "NDEBUG" /win32
+MTL_PROJ=/nologo /D "NDEBUG" /win32 
+# ADD BASE RSC /l 0x409 /d "NDEBUG"
+# ADD RSC /l 0x409 /d "NDEBUG"
+RSC_PROJ=/l 0x409 /fo"$(INTDIR)/WALLYSDK.res" /d "NDEBUG" 
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo
+# ADD BSC32 /nologo
+BSC32_FLAGS=/nologo /o"$(OUTDIR)/Wallysdk.bsc" 
+BSC32_SBRS=
+LINK32=link.exe
+# ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /machine:I386
+# ADD LINK32 winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo /subsystem:windows /dll /machine:I386 /out:"Wally97_DLL\Wally97.dll"
+# SUBTRACT LINK32 /pdb:none
+LINK32_FLAGS=winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib\
+ comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib /nologo\
+ /subsystem:windows /dll /incremental:no /pdb:"$(OUTDIR)/Wally97.pdb"\
+ /machine:I386 /def:".\Wally97.def" /out:"$(OUTDIR)/Wally97_DLL\Wally97.dll"\
+ /implib:"$(OUTDIR)/Wally97.lib" 
+DEF_FILE= \
+	".\Wally97.def"
+LINK32_OBJS= \
+	"$(INTDIR)/EXPRESNS.OBJ" \
+	"$(INTDIR)/TOONFILE.OBJ" \
+	"$(INTDIR)/BUBBLE.OBJ" \
+	"$(INTDIR)/ANIMATE.OBJ" \
+	"$(INTDIR)/SPRITE32.OBJ" \
+	"$(INTDIR)/MESSAGES.OBJ" \
+	"$(INTDIR)/PLAYSND.OBJ" \
+	"$(INTDIR)/WDLLWIN.OBJ" \
+	"$(INTDIR)/WALLYSDK.res"
+
+"$(OUTDIR)\Wally97_DLL\Wally97.dll" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
+    $(LINK32) @<<
+  $(LINK32_FLAGS) $(LINK32_OBJS)
+<<
+
+!ENDIF 
+
+.c{$(CPP_OBJS)}.obj:
+   $(CPP) $(CPP_PROJ) $<  
+
+.cpp{$(CPP_OBJS)}.obj:
+   $(CPP) $(CPP_PROJ) $<  
+
+.cxx{$(CPP_OBJS)}.obj:
+   $(CPP) $(CPP_PROJ) $<  
+
+.c{$(CPP_SBRS)}.sbr:
+   $(CPP) $(CPP_PROJ) $<  
+
+.cpp{$(CPP_SBRS)}.sbr:
+   $(CPP) $(CPP_PROJ) $<  
+
+.cxx{$(CPP_SBRS)}.sbr:
+   $(CPP) $(CPP_PROJ) $<  
+
+################################################################################
+# Begin Target
+
+# Name "Wallysdk - Win32 Release"
+# Name "Wallysdk - Win32 Debug"
+# Name "Wallysdk - Win32 Wally 95 Release DLL"
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+!ENDIF 
+
+################################################################################
+# Begin Source File
+
+SOURCE=.\EXPRESNS.C
+DEP_CPP_EXPRE=\
+	".\EXPRESNS.H"\
+	".\SPRITE32.H"\
+	".\wally96.h"\
+	".\TOONFILE.H"\
+	".\MESSAGES.H"\
+	".\PLAYSND.H"\
+	
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+
+"$(INTDIR)\EXPRESNS.OBJ" : $(SOURCE) $(DEP_CPP_EXPRE) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+
+"$(INTDIR)\EXPRESNS.OBJ" : $(SOURCE) $(DEP_CPP_EXPRE) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+
+"$(INTDIR)\EXPRESNS.OBJ" : $(SOURCE) $(DEP_CPP_EXPRE) "$(INTDIR)"
+
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=.\TOONFILE.C
+DEP_CPP_TOONF=\
+	".\PLAYSND.H"\
+	".\wally96.h"\
+	".\TOONFILE.H"\
+	
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+
+"$(INTDIR)\TOONFILE.OBJ" : $(SOURCE) $(DEP_CPP_TOONF) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+
+"$(INTDIR)\TOONFILE.OBJ" : $(SOURCE) $(DEP_CPP_TOONF) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+
+"$(INTDIR)\TOONFILE.OBJ" : $(SOURCE) $(DEP_CPP_TOONF) "$(INTDIR)"
+
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=.\BUBBLE.C
+DEP_CPP_BUBBL=\
+	".\SPRITE32.H"\
+	".\BUBBLE.H"\
+	
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+
+"$(INTDIR)\BUBBLE.OBJ" : $(SOURCE) $(DEP_CPP_BUBBL) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+
+"$(INTDIR)\BUBBLE.OBJ" : $(SOURCE) $(DEP_CPP_BUBBL) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+
+"$(INTDIR)\BUBBLE.OBJ" : $(SOURCE) $(DEP_CPP_BUBBL) "$(INTDIR)"
+
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=.\ANIMATE.C
+DEP_CPP_ANIMA=\
+	".\SPRITE32.H"\
+	".\ANIMATE.H"\
+	
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+
+"$(INTDIR)\ANIMATE.OBJ" : $(SOURCE) $(DEP_CPP_ANIMA) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+
+"$(INTDIR)\ANIMATE.OBJ" : $(SOURCE) $(DEP_CPP_ANIMA) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+
+"$(INTDIR)\ANIMATE.OBJ" : $(SOURCE) $(DEP_CPP_ANIMA) "$(INTDIR)"
+
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=.\SPRITE32.C
+DEP_CPP_SPRIT=\
+	".\SPRITE32.H"\
+	
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+
+"$(INTDIR)\SPRITE32.OBJ" : $(SOURCE) $(DEP_CPP_SPRIT) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+
+"$(INTDIR)\SPRITE32.OBJ" : $(SOURCE) $(DEP_CPP_SPRIT) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+
+"$(INTDIR)\SPRITE32.OBJ" : $(SOURCE) $(DEP_CPP_SPRIT) "$(INTDIR)"
+
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=.\MESSAGES.C
+DEP_CPP_MESSA=\
+	".\SPRITE32.H"\
+	".\wally96.h"\
+	".\MESSAGES.H"\
+	".\ANIMATE.H"\
+	".\BUBBLE.H"\
+	".\TOONFILE.H"\
+	".\EXPRESNS.H"\
+	".\wdllwin.h"\
+	".\PLAYSND.H"\
+	
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+
+"$(INTDIR)\MESSAGES.OBJ" : $(SOURCE) $(DEP_CPP_MESSA) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+
+"$(INTDIR)\MESSAGES.OBJ" : $(SOURCE) $(DEP_CPP_MESSA) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+
+"$(INTDIR)\MESSAGES.OBJ" : $(SOURCE) $(DEP_CPP_MESSA) "$(INTDIR)"
+
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=.\PLAYSND.C
+DEP_CPP_PLAYS=\
+	".\PLAYSND.H"\
+	
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+
+"$(INTDIR)\PLAYSND.OBJ" : $(SOURCE) $(DEP_CPP_PLAYS) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+
+"$(INTDIR)\PLAYSND.OBJ" : $(SOURCE) $(DEP_CPP_PLAYS) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+
+"$(INTDIR)\PLAYSND.OBJ" : $(SOURCE) $(DEP_CPP_PLAYS) "$(INTDIR)"
+
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=.\WDLLWIN.C
+DEP_CPP_WDLLW=\
+	".\wdllwin.h"\
+	".\wally96.h"\
+	
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+
+"$(INTDIR)\WDLLWIN.OBJ" : $(SOURCE) $(DEP_CPP_WDLLW) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+
+"$(INTDIR)\WDLLWIN.OBJ" : $(SOURCE) $(DEP_CPP_WDLLW) "$(INTDIR)"
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+
+"$(INTDIR)\WDLLWIN.OBJ" : $(SOURCE) $(DEP_CPP_WDLLW) "$(INTDIR)"
+
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=.\WALLYSDK.RC
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+DEP_RSC_WALLY=\
+	".\WWRTN2.BMP"\
+	".\WWRTN1.BMP"\
+	".\WWR2L8.BMP"\
+	".\WWR2L7.BMP"\
+	".\WWR2L6.BMP"\
+	".\WWR2L5.BMP"\
+	".\WWR2L4.BMP"\
+	".\WWR2L3.BMP"\
+	".\WWR2L2.BMP"\
+	".\WWR2L1.BMP"\
+	".\WWLTN2.BMP"\
+	".\WWLTN1.BMP"\
+	".\WWL2R8.BMP"\
+	".\WWL2R7.BMP"\
+	".\WWL2R6.BMP"\
+	".\WWL2R5.BMP"\
+	".\WWL2R4.BMP"\
+	".\WWL2R3.BMP"\
+	".\WWL2R2.BMP"\
+	".\WWL2R1.BMP"\
+	".\BUBLEFT1.BMP"\
+	".\BUBRGHT1.BMP"\
+	".\POSE01.BMP"\
+	".\POSE02.BMP"\
+	".\POSE06.BMP"\
+	".\POSE07.BMP"\
+	".\POSE08.BMP"\
+	".\POSE03.BMP"\
+	".\POSE04.BMP"\
+	".\POSE05.BMP"\
+	".\expresns.bmp"\
+	".\POSE16.BMP"\
+	".\POSE15.BMP"\
+	".\POSE14.BMP"\
+	".\POSE13.BMP"\
+	".\POSE12.BMP"\
+	".\POSE11.BMP"\
+	".\POSE10.BMP"\
+	".\POSE09.BMP"\
+	
+
+"$(INTDIR)\WALLYSDK.res" : $(SOURCE) $(DEP_RSC_WALLY) "$(INTDIR)"
+   $(RSC) $(RSC_PROJ) $(SOURCE)
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+DEP_RSC_WALLY=\
+	".\WWRTN2.BMP"\
+	".\WWRTN1.BMP"\
+	".\WWR2L8.BMP"\
+	".\WWR2L7.BMP"\
+	".\WWR2L6.BMP"\
+	".\WWR2L5.BMP"\
+	".\WWR2L4.BMP"\
+	".\WWR2L3.BMP"\
+	".\WWR2L2.BMP"\
+	".\WWR2L1.BMP"\
+	".\WWLTN2.BMP"\
+	".\WWLTN1.BMP"\
+	".\WWL2R8.BMP"\
+	".\WWL2R7.BMP"\
+	".\WWL2R6.BMP"\
+	".\WWL2R5.BMP"\
+	".\WWL2R4.BMP"\
+	".\WWL2R3.BMP"\
+	".\WWL2R2.BMP"\
+	".\WWL2R1.BMP"\
+	".\BUBLEFT1.BMP"\
+	".\BUBRGHT1.BMP"\
+	".\POSE01.BMP"\
+	".\POSE02.BMP"\
+	".\POSE06.BMP"\
+	".\POSE07.BMP"\
+	".\POSE08.BMP"\
+	".\POSE03.BMP"\
+	".\POSE04.BMP"\
+	".\POSE05.BMP"\
+	".\expresns.bmp"\
+	".\POSE16.BMP"\
+	".\POSE15.BMP"\
+	".\POSE14.BMP"\
+	".\POSE13.BMP"\
+	".\POSE12.BMP"\
+	".\POSE11.BMP"\
+	".\POSE10.BMP"\
+	".\POSE09.BMP"\
+	
+
+"$(INTDIR)\WALLYSDK.res" : $(SOURCE) $(DEP_RSC_WALLY) "$(INTDIR)"
+   $(RSC) $(RSC_PROJ) $(SOURCE)
+
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+DEP_RSC_WALLY=\
+	".\WWRTN2.BMP"\
+	".\WWRTN1.BMP"\
+	".\WWR2L8.BMP"\
+	".\WWR2L7.BMP"\
+	".\WWR2L6.BMP"\
+	".\WWR2L5.BMP"\
+	".\WWR2L4.BMP"\
+	".\WWR2L3.BMP"\
+	".\WWR2L2.BMP"\
+	".\WWR2L1.BMP"\
+	".\WWLTN2.BMP"\
+	".\WWLTN1.BMP"\
+	".\WWL2R8.BMP"\
+	".\WWL2R7.BMP"\
+	".\WWL2R6.BMP"\
+	".\WWL2R5.BMP"\
+	".\WWL2R4.BMP"\
+	".\WWL2R3.BMP"\
+	".\WWL2R2.BMP"\
+	".\WWL2R1.BMP"\
+	".\BUBLEFT1.BMP"\
+	".\BUBRGHT1.BMP"\
+	".\POSE01.BMP"\
+	".\POSE02.BMP"\
+	".\POSE06.BMP"\
+	".\POSE07.BMP"\
+	".\POSE08.BMP"\
+	".\POSE03.BMP"\
+	".\POSE04.BMP"\
+	".\POSE05.BMP"\
+	".\expresns.bmp"\
+	".\POSE16.BMP"\
+	".\POSE15.BMP"\
+	".\POSE14.BMP"\
+	".\POSE13.BMP"\
+	".\POSE12.BMP"\
+	".\POSE11.BMP"\
+	".\POSE10.BMP"\
+	".\POSE09.BMP"\
+	".\pose24.bmp"\
+	".\pose18.bmp"\
+	".\pose19.bmp"\
+	".\pose20.bmp"\
+	".\pose21.bmp"\
+	".\pose22.bmp"\
+	".\pose23.bmp"\
+	".\pose17.bmp"\
+	
+
+"$(INTDIR)\WALLYSDK.res" : $(SOURCE) $(DEP_RSC_WALLY) "$(INTDIR)"
+   $(RSC) $(RSC_PROJ) $(SOURCE)
+
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=.\Wally97.def
+
+!IF  "$(CFG)" == "Wallysdk - Win32 Release"
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Debug"
+
+!ELSEIF  "$(CFG)" == "Wallysdk - Win32 Wally 95 Release DLL"
+
+!ENDIF 
+
+# End Source File
+# End Target
+# End Project
+################################################################################
