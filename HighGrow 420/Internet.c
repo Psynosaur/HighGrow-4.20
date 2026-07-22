@@ -1,6 +1,5 @@
 #include<windows.h>
 #include<wininet.h>
-#include<iostream.h>
 #include "resource.h"
 #include "dibitmap.h"  
 #include "global.h"  
@@ -370,7 +369,7 @@ BOOL INGetInternetRoomImageFile(HWND hwnd, HINSTANCE hInst, char *szFileURL)
     if(strlen(szFileURL) == 0) return FALSE;
     // copy the URL to our test string and lowercase it
     strcpy(szCopyURL, szFileURL);
-    strlwr(szCopyURL);
+    _strlwr(szCopyURL);
     // first we check for the "highgrow://" sequence
     if(strncmp(szCopyURL, "highgrow://", 11)==0)  iptr = 11;
     // now we check if a server name is the next part supplied

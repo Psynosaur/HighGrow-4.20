@@ -3,6 +3,10 @@
 // *************************************************
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 BOOL HGIDrawResourceWindow(HWND hwnd, HINSTANCE hInst, HDC hdc, UINT uiRes);
 BOOL HGIDrawFileWindow(HWND hwnd, HDC hdc, LPCTSTR lpFileName);
 
@@ -15,4 +19,7 @@ BOOL HGILoadRoomEditImage(HINSTANCE hInst, UINT uiRes);
 void HGIFreeRoomEditImage(void);
 void HGIRenderRoomEditImage(HDC hdc, RECT rc);
 
+#ifdef __cplusplus
+}
+#endif
 

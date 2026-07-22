@@ -124,8 +124,8 @@ CLEAN :
 CPP=cl.exe
 # ADD BASE CPP /nologo /MD /W3 /GX /O2 /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR /YX /c
 # ADD CPP /nologo /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /FR /YX /c
-CPP_PROJ=/nologo /ML /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D\
- "_MBCS" /FR"$(INTDIR)/" /Fp"$(INTDIR)/highgrow.pch" /YX /Fo"$(INTDIR)/" /c 
+CPP_PROJ=/nologo /MT /W3 /EHsc /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D\
+ "_MBCS" /Fo"$(INTDIR)/" /c 
 CPP_OBJS=.\WinRel/
 CPP_SBRS=.\WinRel/
 
@@ -669,8 +669,8 @@ CLEAN :
 CPP=cl.exe
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /FR /YX /c
 # ADD CPP /nologo /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /FR /YX /c
-CPP_PROJ=/nologo /ML /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D\
- "_MBCS" /FR"$(INTDIR)/" /Fp"$(INTDIR)/highgrow.pch" /YX /Fo"$(INTDIR)/" /c 
+CPP_PROJ=/nologo /MT /W3 /EHsc /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D\
+ "_MBCS" /D "_CRT_SECURE_NO_WARNINGS" /Fo"$(INTDIR)/" /c 
 CPP_OBJS=.\highgrow/
 CPP_SBRS=.\highgrow/
 
@@ -747,10 +747,18 @@ LINK32=link.exe
 # SUBTRACT LINK32 /incremental:yes /nodefaultlib
 LINK32_FLAGS=version.lib kernel32.lib user32.lib gdi32.lib winspool.lib\
  comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib\
- comctl32.lib winmm.lib /nologo /subsystem:windows /incremental:no\
+ comctl32.lib winmm.lib wininet.lib htmlhelp.lib gdiplus.lib /nologo /subsystem:windows /incremental:no\
  /pdb:"$(OUTDIR)/highgrow.pdb" /machine:I386 /out:"$(OUTDIR)/highgrow.exe" 
 LINK32_OBJS= \
 	"$(INTDIR)/Registry.obj" \
+	"$(INTDIR)/GrowEdit.obj" \
+	"$(INTDIR)/FastForward.obj" \
+	"$(INTDIR)/Vacation.obj" \
+	"$(INTDIR)/Internet.obj" \
+	"$(INTDIR)/crypt.obj" \
+	"$(INTDIR)/DibAPI.obj" \
+	"$(INTDIR)/Zoomer.obj" \
+	"$(INTDIR)/JPGCompat.obj" \
 	"$(INTDIR)/VersInfo.obj" \
 	"$(INTDIR)/ToolBar.obj" \
 	"$(INTDIR)/Leaves.obj" \
@@ -829,9 +837,6 @@ DEP_RSC_HIGHG=\
 	".\ico00001.ico"\
 	".\Appleaf.ico"\
 	".\Leaf.bmp"\
-	".\GrowRoom.bmp"\
-	".\Lshade.bmp"\
-	".\Llight.bmp"\
 	".\Title.bmp"\
 	".\toolbar.bmp"\
 	".\seedlist.bmp"\
@@ -929,9 +934,6 @@ DEP_RSC_HIGHG=\
 	".\ico00001.ico"\
 	".\Appleaf.ico"\
 	".\Leaf.bmp"\
-	".\GrowRoom.bmp"\
-	".\Lshade.bmp"\
-	".\Llight.bmp"\
 	".\Title.bmp"\
 	".\toolbar.bmp"\
 	".\seedlist.bmp"\
