@@ -1,53 +1,53 @@
 ////////////////////////////////////////////////////////////////
-// MSDN Magazine -- October 2001
-// If this code works, it was written by Paul DiLascia.
-// If not, I don't know who wrote it.
-// Compiles with Visual C++ 6.0 for Windows 98 and probably Windows 2000 too.
-// Set tabsize = 3 in your editor.
+// GDI+ port of Paul DiLascia's "Picture object" (MSDN, Oct 2001),
+// which this game used via Picture.h/Picture.cpp (OLE IPicture).
 //
+// The original depended on MFC (CFile/CArchive/CDC/CRect/CSize) and
+// ATL (CComQIPtr). Neither is available here, and the MinGW-w64
+// headers ship a *different* "IPicture" (VB-era GUID 7BF80980-...)
+// with an incompatible Render() layout, so OLE IPicture is out.
+//
+// GDI+ is the modern successor: same load-from-file /
+// load-from-resource / stretch-render-to-DC behaviour. Both load
+// paths funnel through a COM IStream over the raw bytes, because
+// the MinGW GDI+ headers expose Image(IStream*,BOOL) but not the
+// C++ Stream/MemoryStream wrappers MSVC has.
+//
+// Only the surface actually used by JPGView.cpp is kept:
+//   Load from resource, Load from file, Render to HDC, Free,
+//   GetImageSize.
+////////////////////////////////////////////////////////////////
 #pragma once
-#include <atlbase.h>
 
-//////////////////
-// Picture object--encapsulates IPicture
-//
+#include <windows.h>
+#include <gdiplus.h>
+
 class CPicture {
 public:
-	CPicture();
-	~CPicture();
+    CPicture();
+    ~CPicture();
 
-	// Load frm various sosurces
-	BOOL Load(HINSTANCE hInst, UINT nIDRes);
-	BOOL Load(LPCTSTR pszPathName);
-	BOOL Load(CFile& file);
-	BOOL Load(CArchive& ar);
-	BOOL Load(IStream* pstm);
+    // Load from various sources
+    BOOL Load(HINSTANCE hInst, UINT nIDRes);   // resource of type "IMAGE"
+    BOOL Load(LPCTSTR lpFileName);             // from file
 
-	// render to device context
-	BOOL Render(CDC* pDC, CRect rc=CRect(0,0,0,0),
-		LPCRECT prcMFBounds=NULL) const;
+    // stretch-render to the given bounds on a device context
+    // (defaults mirror the original: Render(&dc) / Render(&dc, &rc) / Render(&dc, &rc, prcMF))
+    BOOL Render(HDC hdc, const RECT* prcBounds = NULL,
+                const RECT* prcSrc = NULL,
+                const RECT* prcMFBounds = NULL);
 
-	CSize GetImageSize(CDC* pDC=NULL) const;
+    // size of the picture in pixels
+    SIZE GetImageSize(HDC hdc) const;
 
-	operator IPicture*() {
-		return m_spIPicture;
-	}
+    void Free();
 
-	void GetHIMETRICSize(OLE_XSIZE_HIMETRIC& cx, OLE_YSIZE_HIMETRIC& cy) const {
-		cx = cy = 0;
-		const_cast<CPicture*>(this)->m_hr = m_spIPicture->get_Width(&cx);
-		ASSERT(SUCCEEDED(m_hr));
-		const_cast<CPicture*>(this)->m_hr = m_spIPicture->get_Height(&cy);
-		ASSERT(SUCCEEDED(m_hr));
-	}
+private:
+    // build the image from raw bytes (shared by both load paths);
+    // on success leaves m_pData set to the backing bytes
+    BOOL LoadFromBytes(const void* pData, DWORD cbData);
 
-	void Free() {
-		if (m_spIPicture) {
-			m_spIPicture.Release();
-		}
-	}
-
-protected:
-	CComQIPtr<IPicture>m_spIPicture;		 // ATL smart pointer to IPicture
-	HRESULT m_hr;								 // last error code
+    Gdiplus::Image* m_pImage;   // was: CComQIPtr<IPicture>
+    HGLOBAL         m_pData;    // bytes backing the IStream (kept alive while image lives)
+    HRESULT         m_hr;       // last error code
 };

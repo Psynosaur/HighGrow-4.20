@@ -1,169 +1,211 @@
 ////////////////////////////////////////////////////////////////
-// MSDN Magazine -- October 2001
-// If this code works, it was written by Paul DiLascia.
-// If not, I don't know who wrote it.
-// Compiles with Visual C++ 6.0 for Windows 98 and probably Windows 2000 too.
-// Set tabsize = 3 in your editor.
+// GDI+ port of Paul DiLascia's CPicture (MSDN, Oct 2001).
+// Same behaviour as the original IPicture-based wrapper:
+//   load from resource / load from file / stretch-render to DC.
 //
+// Both load paths copy the bytes into a HGLOBAL and hand GDI+ a
+// COM IStream over them (CreateStreamOnHGlobal) - the MinGW GDI+
+// headers expose Image(IStream*,BOOL) but not the MSVC-only C++
+// Stream/MemoryStream wrappers. The bytes stay alive for the
+// lifetime of the image (GDI+ may read the stream lazily).
+////////////////////////////////////////////////////////////////
 #include "StdAfx.h"
 #include "Picture.h"
+#include <gdiplus.h>
+#include <string.h>
+#include <ole2.h>      // CreateStreamOnHGlobal
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#undef THIS_FILE
-static char THIS_FILE[] = __FILE__;
-#endif
+using namespace Gdiplus;
 
-////////////////////////////////////////////////////////////////
-// CPicture implementation
-//
+static ULONG_PTR s_GdiToken = 0;
 
+// --------------------------------------------------------------------
+// One-time GDI+ initialization.
+// --------------------------------------------------------------------
+static void EnsureGdiPlusInitialized(void)
+{
+    if(!s_GdiToken)
+    {
+        GdiplusStartupInput gi;
+        GdiplusStartup(&s_GdiToken, &gi, NULL);
+    }
+}
+
+// --------------------------------------------------------------------
+// Build the image from raw bytes (shared by both load paths).
+// Leaves m_pData set to the backing bytes on success.
+// --------------------------------------------------------------------
+BOOL CPicture::LoadFromBytes(const void* pData, DWORD cbData)
+{
+    HGLOBAL hGlobal = GlobalAlloc(GMEM_MOVEABLE, cbData);
+    if(!hGlobal)
+        return FALSE;
+
+    memcpy(GlobalLock(hGlobal), pData, cbData);
+    GlobalUnlock(hGlobal);
+
+    IStream* pStream = NULL;
+    BOOL ok = FALSE;
+
+    if(SUCCEEDED(CreateStreamOnHGlobal(hGlobal, FALSE, &pStream)))
+    {
+        m_pImage = new Image(pStream, FALSE);
+        if(m_pImage && m_pImage->GetLastStatus() == Ok)
+            ok = TRUE;
+        pStream->Release();
+    }
+
+    if(ok)
+    {
+        m_pData = hGlobal;    // keep the backing bytes alive
+        m_hr = S_OK;
+    }
+    else
+    {
+        delete m_pImage;
+        m_pImage = NULL;
+        GlobalFree(hGlobal);
+        m_hr = E_FAIL;
+    }
+
+    return ok;
+}
+
+// --------------------------------------------------------------------
 CPicture::CPicture()
 {
+    m_pImage = NULL;
+    m_pData  = NULL;
+    m_hr     = E_FAIL;
 }
 
 CPicture::~CPicture()
 {
+    Free();
 }
 
-
-//////////////////
-// Load from resource. Looks for "IMAGE" type.
-//
+// --------------------------------------------------------------------
+// Load from resource (type "IMAGE" - same as the original).
+// --------------------------------------------------------------------
 BOOL CPicture::Load(HINSTANCE hInst, UINT nIDRes)
 {
-	// find resource in resource file
-//	HINSTANCE hInst = AfxGetResourceHandle();
-	HRSRC hRsrc = ::FindResource(hInst,
-		MAKEINTRESOURCE(nIDRes),
-		"IMAGE"); // type
-	if (!hRsrc)
-		return FALSE;
+    Free();
+    EnsureGdiPlusInitialized();
 
-	// load resource into memory
-	DWORD len = SizeofResource(hInst, hRsrc);
-	BYTE* lpRsrc = (BYTE*)LoadResource(hInst, hRsrc);
-	if (!lpRsrc)
-		return FALSE;
+    HRSRC       hRsrc  = FindResource(hInst, MAKEINTRESOURCE(nIDRes), "IMAGE");
+    DWORD       dwSize = 0;
+    const BYTE* lpRsrc = NULL;
 
-	// create memory file and load it
-	CMemFile file(lpRsrc, len);
-	BOOL bRet = Load(file);
-	FreeResource(hRsrc);
+    if(!hRsrc)
+        return FALSE;
 
-	return bRet;
+    dwSize = SizeofResource(hInst, hRsrc);
+    lpRsrc = (const BYTE*)LoadResource(hInst, hRsrc);
+
+    BOOL bRet = (lpRsrc && dwSize > 0) ? LoadFromBytes(lpRsrc, dwSize) : FALSE;
+
+    FreeResource(hRsrc);
+    return bRet;
 }
 
-//////////////////
-// Load from path name.
-//
-BOOL CPicture::Load(LPCTSTR pszPathName)
+// --------------------------------------------------------------------
+// Load from file.
+// --------------------------------------------------------------------
+BOOL CPicture::Load(LPCTSTR lpFileName)
 {
-	CFile file;
-	if (!file.Open(pszPathName, CFile::modeRead|CFile::shareDenyWrite))
-		return FALSE;
-	BOOL bRet = Load(file);
-	file.Close();
-	return bRet;
-}
+    Free();
+    EnsureGdiPlusInitialized();
 
-//////////////////
-// Load from CFile
-//
-BOOL CPicture::Load(CFile& file)
-{
-	CArchive ar(&file, CArchive::load | CArchive::bNoFlushOnDelete);
-	return Load(ar);
-}
+    HANDLE hFile = CreateFile(lpFileName, GENERIC_READ, FILE_SHARE_READ,
+                              NULL, OPEN_EXISTING, 0, NULL);
+    if(hFile == INVALID_HANDLE_VALUE)
+        return FALSE;
 
-//////////////////
-// Load from archive--create stream and load from stream.
-//
+    DWORD dwSize = GetFileSize(hFile, NULL);
+    BOOL  bRet   = FALSE;
 
-BOOL CPicture::Load(CArchive& ar)
-{
-	CArchiveStream arcstream(&ar);
-	return Load((IStream*)&arcstream);
-}
-
-//////////////////
-// Load from stream (IStream). This is the one that really does it: call
-// OleLoadPicture to do the work.
-//
-BOOL CPicture::Load(IStream* pstm)
-{
-	Free();
-	HRESULT hr = OleLoadPicture(pstm, 0, FALSE,
-		IID_IPicture, (void**)&m_spIPicture);
-	ASSERT(SUCCEEDED(hr) && m_spIPicture);	
-	return TRUE;
-}
-
-//////////////////
-// Render to device context. Covert to HIMETRIC for IPicture.
-//
-BOOL CPicture::Render(CDC* pDC, CRect rc, LPCRECT prcMFBounds) const
-{
-	ASSERT(pDC);
-
-	if (rc.IsRectNull()) {
-		CSize sz = GetImageSize(pDC);
-		rc.right = rc.left + sz.cx;
-		rc.bottom = rc.top + sz.cy;
-	}
-	long hmWidth,hmHeight; // HIMETRIC units
-	GetHIMETRICSize(hmWidth, hmHeight);
-	m_spIPicture->Render(*pDC, rc.left, rc.top, rc.Width(), rc.Height(),
-		0, hmHeight, hmWidth, -hmHeight, prcMFBounds);
-
-	return TRUE;
-}
-
-//////////////////
-// Get image size in pixels. Converts from HIMETRIC to device coords.
-//
-CSize CPicture::GetImageSize(CDC* pDC) const
-{
-	if (!m_spIPicture)
-		return CSize(0,0);
-	
-	LONG hmWidth, hmHeight; // HIMETRIC units
-	m_spIPicture->get_Width(&hmWidth);
-	m_spIPicture->get_Height(&hmHeight);
-	CSize sz(hmWidth,hmHeight);
-	if (pDC==NULL) {
-		CWindowDC dc(NULL);
-		dc.HIMETRICtoDP(&sz); // convert to pixels
-	} else {
-		pDC->HIMETRICtoDP(&sz);
-	}
-	return sz;
-}
-
-
-
-
-
-
-// *****************************************************
-/*
-CPicture JPG_pic;
-
-BOOL JPGDrawFileWindow(HWND hwnd, HDC hdc, LPCTSTR lpFileName)
+    if(dwSize > 0 && dwSize != INVALID_FILE_SIZE)
     {
-    BOOL bLoad;
-    RECT rc;
-    // -----
-    GetClientRect(hwnd, &rc);
-    // load the JPG image
-    bLoad = JPG_pic.Load(lpFileName);
-    if(bLoad)
-        { // if we loaded it, we can render it
-//        JPG_pic.Render()
-        MessageBox(hwnd, "Loaded the image", lpFileName, MB_OK);
-        JPG_pic.Free();
-        }
+        HGLOBAL hGlobal = GlobalAlloc(GMEM_MOVEABLE, dwSize);
+        if(hGlobal)
+        {
+            LPVOID lpBuf  = GlobalLock(hGlobal);
+            DWORD  cbRead = 0;
+            BOOL   bRead  = ReadFile(hFile, lpBuf, dwSize, &cbRead, NULL);
+            GlobalUnlock(hGlobal);
 
-    return TRUE;
+            if(bRead && cbRead == dwSize)
+                bRet = LoadFromBytes(lpBuf, dwSize);
+            // LoadFromBytes copied the bytes; free this buffer in
+            // either case (it allocates its own backing copy).
+            if(!bRet)
+                GlobalFree(hGlobal);
+        }
     }
-*/
+
+    CloseHandle(hFile);
+    return bRet;
+}
+
+// --------------------------------------------------------------------
+// Stretch-render to a device context (matches the old
+// IPicture::Render(hdc, prcBounds, NULL, NULL) behaviour).
+// --------------------------------------------------------------------
+BOOL CPicture::Render(HDC hdc, const RECT* prcBounds,
+                      const RECT* prcSrc,
+                      const RECT* prcMFBounds)
+{
+    if(!m_pImage)
+        return FALSE;
+
+    REAL fx = 0, fy = 0, fw = 1, fh = 1;
+
+    if(prcBounds)
+    {
+        fx = (REAL)prcBounds->left;
+        fy = (REAL)prcBounds->top;
+        fw = (REAL)(prcBounds->right - prcBounds->left);
+        fh = (REAL)(prcBounds->bottom - prcBounds->top);
+    }
+
+    Graphics g(hdc);
+    Status st = g.DrawImage(m_pImage, fx, fy, fw, fh);
+    m_hr = (st == Ok) ? S_OK : E_FAIL;
+    return (st == Ok);
+}
+
+// --------------------------------------------------------------------
+// Picture size in pixels (GDI+ reports pixels directly - the
+// original converted from himetric units).
+// --------------------------------------------------------------------
+SIZE CPicture::GetImageSize(HDC hdc) const
+{
+    SIZE sz = {0, 0};
+    (void)hdc;
+
+    if(!m_pImage)
+        return sz;
+
+    // (m_hr updated via const_cast - same trick as the original)
+    const_cast<CPicture*>(this)->m_hr =
+        (m_pImage->GetLastStatus() == Ok) ? S_OK : E_FAIL;
+    sz.cx = (LONG)m_pImage->GetWidth();
+    sz.cy = (LONG)m_pImage->GetHeight();
+    return sz;
+}
+
+// --------------------------------------------------------------------
+void CPicture::Free()
+{
+    if(m_pImage)
+    {
+        delete m_pImage;
+        m_pImage = NULL;
+    }
+    if(m_pData)
+    {
+        GlobalFree(m_pData);
+        m_pData = NULL;
+    }
+    m_hr = E_FAIL;
+}

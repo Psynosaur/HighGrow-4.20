@@ -39,15 +39,13 @@ BOOL HGIDrawFileWindow(HWND hwnd, HDC hdc, LPCTSTR lpFileName)
     {
     BOOL bLoad = 0;
     RECT rc;
-    CDC  mydc;
     // -----
     GetClientRect(hwnd, &rc);
     // load the JPG image
     bLoad = JPG_file.Load(lpFileName);
     if(bLoad)
         { // if we loaded it, we can render it
-        mydc.Attach(hdc);
-        JPG_file.Render(&mydc, &rc, NULL);
+        JPG_file.Render(hdc, &rc, NULL);
         JPG_file.Free();
         return TRUE;
         }
@@ -123,13 +121,10 @@ void HGIFreeGrowroomImage(void)
 
 void HGIRenderGrowroomImage(HDC hdc, RECT rc)
     {
-    CDC  mydc;
     // ------
     if(bGrowroomLoaded)
         {
-        mydc.Attach(hdc);
-        JPG_Growroom.Render(&mydc, &rc, NULL);
-        mydc.Detach();
+        JPG_Growroom.Render(hdc, &rc, NULL);
         }
     }
 
@@ -166,13 +161,10 @@ void HGIFreeRoomEditImage(void)
 
 void HGIRenderRoomEditImage(HDC hdc, RECT rc)
     {
-    CDC  mydc;
     // ------
     if(bRoomEditLoaded)
         {
-        mydc.Attach(hdc);
-        JPG_RoomEdit.Render(&mydc, &rc, NULL);
-        mydc.Detach();
+        JPG_RoomEdit.Render(hdc, &rc, NULL);
         }
     }
 

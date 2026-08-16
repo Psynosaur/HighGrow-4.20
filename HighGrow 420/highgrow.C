@@ -10,6 +10,11 @@
 #include <time.h>
 #include "stdio.h"
 #include "resource.h"
+
+// Define max macro for compatibility
+#ifndef max
+#define max(a,b) (((a) > (b)) ? (a) : (b))
+#endif
 #include "highgrow.h"
 #include "global.h"
 #include "calc.h"
@@ -42,6 +47,7 @@
 
 #define HG_CHECKTIMER 101 // id of our conditions checking timer
 
+HWND ghwndMain = NULL;  // Main window handle - defined here
 HANDLE hAccel=0;
 
 BOOL bAutoLoadEnabled=FALSE; // set if \A is found on the command line
@@ -101,8 +107,8 @@ int PASCAL WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
     wc.hInstance     = hInstance;
     wc.hIcon         = LoadIcon(hInstance, "HIGHGROW");
     wc.hCursor       = LoadCursor (NULL, IDC_ARROW);
-    wc.hbrBackground = GetStockObject (WHITE_BRUSH);
-    wc.lpszMenuName  = (LPCTSTR) "Menu";
+    wc.hbrBackground = (HBRUSH)GetStockObject (WHITE_BRUSH);
+    wc.lpszMenuName  = (LPCTSTR) "MAINMENURESID";   // RC menu resource renamed (windres rejects the name MENU)
     wc.lpszClassName = (LPCTSTR) "HighGrow";
 
     if(!RegisterClass (&wc))
@@ -119,7 +125,7 @@ int PASCAL WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
     wcGr.hInstance     = hInstance;
     wcGr.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
     wcGr.hCursor       = NULL;
-    wcGr.hbrBackground = GetStockObject (WHITE_BRUSH);
+    wcGr.hbrBackground = (HBRUSH)GetStockObject (WHITE_BRUSH);
     wcGr.lpszMenuName  = NULL;
     wcGr.lpszClassName = (LPCTSTR) "GrowRoom";
 
@@ -153,7 +159,7 @@ int PASCAL WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
   while (GetMessage (&msg, NULL, 0, 0))
       {
-      if(!TranslateAccelerator(ghwndMain, hAccel, &msg))
+      if(!TranslateAccelerator(ghwndMain, (HACCEL)hAccel, &msg))
           {
           TranslateMessage (&msg);
           DispatchMessage  (&msg);
@@ -184,10 +190,10 @@ void HGSetWindowCaption(HWND hwnd)
 
 HWND hModelessDlg=0;
 
-BOOL CALLBACK HGModelessDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK HGModelessDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
    {
    static HFONT     hHdrFont=0;
-   const  HINSTANCE hInst = (HINSTANCE)GetWindowLong(hDlg, GWL_HINSTANCE);
+   const  HINSTANCE hInst = (HINSTANCE)GetWindowLongPtr(hDlg, GWLP_HINSTANCE);
 
    switch (message)
       {
@@ -223,7 +229,7 @@ BOOL CALLBACK HGModelessDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM l
       case WM_CTLCOLORSTATIC:
           {
           SetBkMode((HDC)wParam, TRANSPARENT);
-          return (int)GetStockObject(NULL_BRUSH);
+          return (INT_PTR)GetStockObject(NULL_BRUSH);
           }
       return (FALSE);  // only done because we're redirecting the focus
       }
@@ -270,7 +276,7 @@ HPALETTE hStarPalette  = 0;
 // THE FREEWARE STAR DRAWING ALPHA-BLENDING CALLBACK FUNTION
 // ----------------------------------------------------------
 
-void CALLBACK HGAlphaBlendCallback(UINT uTimerID, UINT uMsg, DWORD dwUser, DWORD dw1, DWORD dw2)
+void CALLBACK HGAlphaBlendCallback(UINT uTimerID, UINT uMsg, DWORD_PTR dwUser, DWORD_PTR dw1, DWORD_PTR dw2)
     {
     if(AlphaCallbackCount<50)
         {
@@ -513,11 +519,11 @@ BOOL DoCommand(HWND hwnd, WPARAM wParam, HINSTANCE ghInst)
       return TRUE;
 
       case IDM_HELPCONTENTS:
-             HtmlHelp(hwnd, "HighGrow.chm", HH_DISPLAY_TOPIC, (DWORD)"Contents.htm");
+             HtmlHelp(hwnd, "HighGrow.chm", HH_DISPLAY_TOPIC, (DWORD_PTR)"Contents.htm");
       return TRUE;
 
       case IDM_HELPTIPS:
-             HtmlHelp(hwnd, "HighGrow.chm", HH_DISPLAY_TOPIC, (DWORD)"Hints_and_tips_for_better_growth.htm");
+             HtmlHelp(hwnd, "HighGrow.chm", HH_DISPLAY_TOPIC, (DWORD_PTR)"Hints_and_tips_for_better_growth.htm");
       return TRUE;
 
       case IDM_SOUND:
@@ -576,7 +582,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPar
   static BOOL     bIsProgramRunning; // so that we don't repaint on startup
   static int     iPrevSecs;       // used to check when we must recalculate
   // static int     iLastCalcedSecs; // number of seconds since we last recalculated
-  HINSTANCE ghInst = (HINSTANCE)GetWindowLong(hwnd, GWL_HINSTANCE);
+  HINSTANCE ghInst = (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE);
 
   switch (message)
     {
@@ -637,7 +643,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPar
          if((gbAlphaBlending)&&(!bAutoGrow  ))
                {
                 AlphaCallbackCount = 0;
-                AlphaTimerID = timeSetEvent(25, 0, HGAlphaBlendCallback, (DWORD)hwnd, 
+                AlphaTimerID = timeSetEvent(25, 0, HGAlphaBlendCallback, (DWORD_PTR)hwnd, 
                                               TIME_PERIODIC|TIME_CALLBACK_FUNCTION);
                 }
          // read the type of music file we're dealing with
@@ -820,7 +826,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPar
             }
         if(bIsProgramRunning)  // if we started up successfully before closing
            PASaveEndCheatChecks(); // save critical cheat info in the registry
-        if(hAccel)        DestroyAcceleratorTable(hAccel);
+        if(hAccel)        DestroyAcceleratorTable((HACCEL)hAccel);
         if(hNormCursor)   DestroyCursor(hNormCursor);
         if(hWaitCursor)   DestroyCursor(hWaitCursor);
         DIFreeBitmap(hStarBitmap, hStarPalette);

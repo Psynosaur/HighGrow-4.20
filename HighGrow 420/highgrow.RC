@@ -60,8 +60,9 @@ LINKHAND                CURSOR  DISCARDABLE     "linkhand.cur"
 //
 // Menu
 //
+// (renamed from MENU to MAINMENURESID - windres rejects MENU as a resource name)
 
-MENU MENU DISCARDABLE 
+MAINMENURESID MENU DISCARDABLE 
 BEGIN
     POPUP "&Start"
     BEGIN
@@ -188,7 +189,7 @@ BEGIN
             VALUE "FileDescription", "HighGrow - Legal Marijuana Growing\0"
             VALUE "FileVersion", "3.0\0"
             VALUE "InternalName", "HighGrow\0"
-            VALUE "LegalCopyright", "Copyright © Slick Software 2002\0"
+            VALUE "LegalCopyright", "Copyright ï¿½ Slick Software 2002\0"
             VALUE "LegalTrademarks", "Slick Software is dedicated to creating fun educational software\0"
             VALUE "OriginalFilename", "HighGrow\0"
             VALUE "PrivateBuild", "3.11\0"

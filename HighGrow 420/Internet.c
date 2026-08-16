@@ -1,6 +1,6 @@
 #include<windows.h>
 #include<wininet.h>
-#include<iostream.h>
+// #include<iostream.h>  // Removed - not needed for C code
 #include "resource.h"
 #include "dibitmap.h"  
 #include "global.h"  
@@ -50,7 +50,7 @@ LPCSTR glpHighRoomServer ="kuxr;12yzx2jjikiup{0vu2trpqu/rkr";
 
 BOOL CALLBACK INDownloadedProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
    {
-   const HINSTANCE dhInst = (HINSTANCE)GetWindowLong(hDlg, GWL_HINSTANCE);
+   const HINSTANCE dhInst = (HINSTANCE)GetWindowLongPtr(hDlg, GWLP_HINSTANCE);
    static HFONT hHdrFont=0;
    static HFONT hBigFont=0;
    static HBITMAP  hBkgndBmp=0;
@@ -91,7 +91,7 @@ BOOL CALLBACK INDownloadedProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lP
       case WM_CTLCOLORSTATIC:
           {
           SetBkMode((HDC)wParam, TRANSPARENT);
-          return (int)GetStockObject(NULL_BRUSH);
+          return (INT_PTR)GetStockObject(NULL_BRUSH);
           }
        return (FALSE);
 
@@ -123,10 +123,10 @@ void INDownloadCompleteDialog(HWND hwnd, HINSTANCE hInst)
 HWND hDownloadDlg=0;
 int iDownloadProgress =0;
 
-BOOL CALLBACK INModelessDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK INModelessDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
    {
    static HFONT     hHdrFont=0;
-   const  HINSTANCE hInst = (HINSTANCE)GetWindowLong(hDlg, GWL_HINSTANCE);
+   const  HINSTANCE hInst = (HINSTANCE)GetWindowLongPtr(hDlg, GWLP_HINSTANCE);
    static HBITMAP  hBkgndBmp=0;
    static HPALETTE hBkgndPal=0;
 
@@ -173,7 +173,7 @@ BOOL CALLBACK INModelessDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM l
       case WM_CTLCOLORSTATIC:
           {
           SetBkMode((HDC)wParam, TRANSPARENT);
-          return (int)GetStockObject(NULL_BRUSH);
+          return (INT_PTR)GetStockObject(NULL_BRUSH);
           }
       return (FALSE);  // only done because we're redirecting the focus
 
@@ -488,10 +488,10 @@ BOOL HIUnscrambleURL(HWND hDlg, HINSTANCE hInst)
 //*  BETA TESTING DIALOG FOR DOWNLOADING A ROOM IMAGE FILE FROM THE SERVER
 //******************************************************************************
 
-BOOL CALLBACK INDownloadDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK INDownloadDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
    {
    static HFONT     hHdrFont=0;
-   const  HINSTANCE hInst = (HINSTANCE)GetWindowLong(hDlg, GWL_HINSTANCE);
+   const  HINSTANCE hInst = (HINSTANCE)GetWindowLongPtr(hDlg, GWLP_HINSTANCE);
 
    switch (message)
       {
@@ -527,7 +527,7 @@ BOOL CALLBACK INDownloadDlgProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM l
           else
               {
               SetBkMode((HDC)wParam, TRANSPARENT);
-              return (int)GetStockObject(NULL_BRUSH);
+              return (INT_PTR)GetStockObject(NULL_BRUSH);
               }
           }
       return (FALSE);  // only done because we're redirecting the focus

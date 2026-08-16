@@ -131,7 +131,7 @@ int       FAR  PalEntriesOnDevice (HDC hDC);
 WORD      FAR  PaletteSize (LPSTR lpDIB);
 WORD      FAR  PrintDIB (HDIB, WORD, WORD, WORD, LPSTR);
 WORD      FAR  PrintScreen (LPRECT, WORD, WORD, WORD, LPSTR);
-WORD      FAR  PrintWindow (HWND, WORD, WORD, WORD, WORD, LPSTR);
+WORD      FAR  DIBPrintWindow (HWND, WORD, WORD, WORD, WORD, LPSTR);
 WORD      FAR  SaveDIB (HDIB, LPSTR);
 
 // -------------- PRIVATE STUFF -----------------

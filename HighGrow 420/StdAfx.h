@@ -1,7 +1,5 @@
-#define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
-#include <afxwin.h>         // MFC core and standard components
-#include <afxext.h>         // MFC extensions
-#include <atlbase.h>
-#include <afxdisp.h>
-#include <afxpriv2.h>
-
+#define VC_EXTRALEAN
+#include <windows.h>
+#include <commctrl.h>
+#include <shellapi.h>
+#include <shlwapi.h>
